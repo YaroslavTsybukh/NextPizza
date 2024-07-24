@@ -42,10 +42,25 @@ html {
         --ring: 24.6 95% 53.1%;
         --radius: 18px;
     }
+
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
 }
 
 * {
     font-family: var(--font-nunito), sans-serif;
+    font-weight: 400;
 }
 
 .scrollbar::-webkit-scrollbar {
@@ -64,21 +79,6 @@ html {
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #dbdadd;
-}
-
-@layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
-}
-
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
 }
 
 #nprogress .bar {
