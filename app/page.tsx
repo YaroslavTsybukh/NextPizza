@@ -85,6 +85,68 @@ export default function Home() {
                                 categoryId={1}
                             />
                             <ProductsGroupList
+                                title="Комбо"
+                                items={[
+                                    {
+                                        id: 1,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 2,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 3,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 4,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 5,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 6,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                    {
+                                        id: 7,
+                                        name: 'Комбо Леди Баг и Супер-Кота',
+                                        imageUrl:
+                                            'https://media.dodostatic.net/image/r:292x292/11EEF6A6B5074D71BF2A6750A7C0D927.avif',
+                                        price: 459,
+                                        items: [{ price: 550 }],
+                                    },
+                                ]}
+                                categoryId={2}
+                            />
+                            <ProductsGroupList
                                 title="Закуски"
                                 items={[
                                     {
@@ -144,7 +206,7 @@ export default function Home() {
                                         items: [{ price: 550 }],
                                     },
                                 ]}
-                                categoryId={2}
+                                categoryId={3}
                             />
                         </div>
                     </div>

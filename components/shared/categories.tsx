@@ -1,18 +1,43 @@
-import { cn } from '@/lib/utils';
+'use client';
+
 import { FC } from 'react';
+import { useCategoryStore } from '@/store/categories';
+import { cn } from '@/lib/utils';
 
 const categories = [
-    'Все',
-    'Мясные',
-    'Острые',
-    'Сладкие',
-    'Вегетарианские',
-    'С курицей',
-    'Еще',
+    {
+        id: 1,
+        name: 'Пиццы',
+    },
+    {
+        id: 2,
+        name: 'Комбо',
+    },
+    {
+        id: 3,
+        name: 'Закуски',
+    },
+    {
+        id: 4,
+        name: 'Коктейли',
+    },
+    {
+        id: 5,
+        name: 'Кофе',
+    },
+    {
+        id: 6,
+        name: 'Напитки',
+    },
+    {
+        id: 7,
+        name: 'Десерты',
+    },
 ];
-const activeIndex = 0;
 
 export const Categories: FC<{ className?: string }> = ({ className }) => {
+    const activeId = useCategoryStore((state) => state.activeId);
+
     return (
         <div
             className={cn(
@@ -20,16 +45,17 @@ export const Categories: FC<{ className?: string }> = ({ className }) => {
                 className,
             )}
         >
-            {categories.map((item, idx) => (
+            {categories.map(({ name, id }, idx) => (
                 <a
                     className={cn(
                         'flex h-11 items-center rounded-2xl px-5 font-bold',
-                        activeIndex === idx &&
+                        activeId === id &&
                             'bg-white text-primary shadow-md shadow-gray-200',
                     )}
+                    href={`/#${name}`}
                     key={idx}
                 >
-                    {item}
+                    <button>{name}</button>
                 </a>
             ))}
         </div>
