@@ -9,3 +9,4 @@ export { FilterCheckbox } from './filter-checkbox';
 export { CheckboxFiltersGroup } from './checkbox-filters-group';
 export { ProductsGroupList } from './products-group-list';
 export { ProductCard } from './product-card';
+export { SearchInput } from './search-input';
