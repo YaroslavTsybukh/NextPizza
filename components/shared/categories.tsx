@@ -3,39 +3,14 @@
 import { FC } from 'react';
 import { useCategoryStore } from '@/store/categories';
 import { cn } from '@/lib/utils';
+import { Category } from '@prisma/client';
 
-const categories = [
-    {
-        id: 1,
-        name: 'Пиццы',
-    },
-    {
-        id: 2,
-        name: 'Комбо',
-    },
-    {
-        id: 3,
-        name: 'Закуски',
-    },
-    {
-        id: 4,
-        name: 'Коктейли',
-    },
-    {
-        id: 5,
-        name: 'Кофе',
-    },
-    {
-        id: 6,
-        name: 'Напитки',
-    },
-    {
-        id: 7,
-        name: 'Десерты',
-    },
-];
+interface IProps {
+    items: Category[];
+    className?: string;
+}
 
-export const Categories: FC<{ className?: string }> = ({ className }) => {
+export const Categories: FC<IProps> = ({ items, className }) => {
     const activeId = useCategoryStore((state) => state.activeId);
 
     return (
@@ -45,7 +20,7 @@ export const Categories: FC<{ className?: string }> = ({ className }) => {
                 className,
             )}
         >
-            {categories.map(({ name, id }, idx) => (
+            {items.map(({ name, id }, idx) => (
                 <a
                     className={cn(
                         'flex h-11 items-center rounded-2xl px-5 font-bold',
