@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {
     Container,
     Filters,
@@ -8,7 +7,7 @@ import {
 } from '@/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 
-export default async function Home() {
+export default async function HomePage() {
     const categories = await prisma.category.findMany({
         include: {
             products: {
