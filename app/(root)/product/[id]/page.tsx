@@ -1,9 +1,9 @@
 import {
     Container,
     GroupVariants,
-    ProductImage,
+    PizzaImage,
     Title,
-} from '@/components/shared';
+} from '@/shared/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
 
@@ -14,6 +14,19 @@ export default async function ProductPage({
 }) {
     const product = await prisma.product.findFirst({
         where: { id: Number(params.id) },
+        include: {
+            ingredients: true,
+            category: {
+                include: {
+                    products: {
+                        include: {
+                            items: true,
+                        },
+                    },
+                },
+            },
+            items: true,
+        },
     });
 
     if (!product) notFound();
@@ -21,7 +34,7 @@ export default async function ProductPage({
     return (
         <Container className="my-10 flex flex-col">
             <div className="flex flex-1">
-                <ProductImage src={product.imageUrl} className="" size={40} />
+                <PizzaImage src={product.imageUrl} className="" size={40} />
 
                 <div className="w-[490px] bg-[#f7f6f5] p-7">
                     <Title
