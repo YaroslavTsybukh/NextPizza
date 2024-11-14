@@ -3,7 +3,7 @@
 import { cn } from '@/shared/lib/utils';
 import { FC } from 'react';
 
-interface Variant {
+export interface Variant {
     name: string;
     value: string;
     disabled?: boolean;
