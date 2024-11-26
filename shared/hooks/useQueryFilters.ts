@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import qs from 'qs';
-import { IReturnValues } from './useFilters';
+import { IFilters } from './useFilters';
 import { useRouter } from 'next/navigation';
 
-//TODO: исправить название типизации prop
-export const useQueryFilters = (filter: IReturnValues) => {
+export const useQueryFilters = (filter: IFilters) => {
     const router = useRouter();
 
     useEffect(() => {

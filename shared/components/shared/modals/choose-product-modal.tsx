@@ -22,18 +22,8 @@ export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
             <VisuallyHidden.Root>
                 <DialogTitle />
             </VisuallyHidden.Root>
-            <DialogContent
-                className={cn(
-                    'min-h-[500px] w-[1060px] max-w-[1060px] overflow-hidden bg-white p-0',
-                    className,
-                )}
-            >
-                <ChoosePizzaForm
-                    imageUrl={product.imageUrl}
-                    name={product.name}
-                    ingredients={product.ingredients}
-                    items={product.items}
-                />
+            <DialogContent className={cn('min-h-[500px] w-[1060px] max-w-[1060px] overflow-hidden bg-white p-0', className)}>
+                <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={product.ingredients} productItems={product.items} />
             </DialogContent>
         </Dialog>
     );

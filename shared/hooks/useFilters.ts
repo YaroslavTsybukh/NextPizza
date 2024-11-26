@@ -14,32 +14,22 @@ interface IFilter {
     prices: IPricesProps;
 }
 
-export interface IReturnValues extends IFilter {
+export interface IFilters extends IFilter {
     toggleIngredient: (id: string) => void;
     toggleTypePizza: (id: string) => void;
     toggleSizePizza: (id: string) => void;
     updatePrice: (priceName: keyof IPricesProps, value: number) => void;
 }
 
-export const useFilters = (): IReturnValues => {
+export const useFilters = (): IFilters => {
     const searchParams = useSearchParams();
 
-    const [selectedIngredient, { toggle: toggleIngredient }] = useSet(
-        new Set<string>(searchParams.get('ingredient')?.split(',')),
-    );
+    const [selectedIngredient, { toggle: toggleIngredient }] = useSet(new Set<string>(searchParams.get('ingredient')?.split(',')));
     const [selectedTypePizza, { toggle: toggleTypePizza }] = useSet(
-        new Set<string>(
-            searchParams.has('typePizza')
-                ? searchParams.get('typePizza')?.split(',')
-                : [],
-        ),
+        new Set<string>(searchParams.has('typePizza') ? searchParams.get('typePizza')?.split(',') : []),
     );
     const [selectedSizePizza, { toggle: toggleSizePizza }] = useSet(
-        new Set<string>(
-            searchParams.has('sizePizza')
-                ? searchParams.get('sizePizza')?.split(',')
-                : [],
-        ),
+        new Set<string>(searchParams.has('sizePizza') ? searchParams.get('sizePizza')?.split(',') : []),
     );
     const [prices, setPrice] = useState<IPricesProps>({
         priceFrom: Number(searchParams.get('priceFrom')) || undefined,
