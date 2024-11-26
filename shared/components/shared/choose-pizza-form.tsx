@@ -2,17 +2,21 @@
 
 import { FC, useEffect, useState } from 'react';
 import { useSet } from 'react-use';
+
 import { Ingredient, ProductItem } from '@prisma/client';
-import { cn } from '@/shared/lib/utils';
-import { PizzaSize, PizzaType, pizzaTypes, pizzaSizes, mapPizzaType } from '@/shared/constants/pizza';
-import { GroupVariants, Title, PizzaImage, IngredientItem } from '.';
+// import { cn } from '@/shared/lib/utils';
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
+import { getPizzaDetails, getAvailablePizzaSizes, cn } from '@/shared/lib';
+import { usePizzaOptions } from '@/shared/hooks';
+
 import { Button } from '../ui/button';
+import { GroupVariants, Title, PizzaImage, IngredientItem } from '.';
 
 interface IProps {
     imageUrl: string;
     name: string;
     ingredients: Ingredient[];
-    items: ProductItem[];
+    productItems: ProductItem[];
     // loading?: boolean;
     className?: string;
 }
@@ -21,47 +25,13 @@ export const ChoosePizzaForm: FC<IProps> = ({
     imageUrl,
     name,
     ingredients,
-    items,
+    productItems,
     // loading,
     className,
 }) => {
-    const [size, setSize] = useState<PizzaSize>(20);
-    const [type, setType] = useState<PizzaType>(1);
+    const { type, size, availableSizes, selectedIngredients, setSize, setType, addIngredient } = usePizzaOptions(productItems);
 
-    const [selectedIngredients, { toggle: addIngredient }] = useSet(new Set<number>([]));
-
-    //* Логика подсчета суммы пиццы
-    const pizzaPrice = items.find((items) => items.pizzaType === type && items.size === size)?.price || 0;
-
-    const totalIngredientsPrice = ingredients
-        .filter((ingredient) => selectedIngredients.has(ingredient.id))
-        .reduce((sum, current) => sum + current.price, 0);
-
-    const totalPizzaPrice = pizzaPrice + totalIngredientsPrice;
-    const textDetaills = `${size}см, ${mapPizzaType[type]} пицца`;
-    // *
-
-    // * Массив отфильтрованных пицц по типу и массив досустыпных размеров пицц.
-    const filteredPizzasByType = items.filter((item) => item.pizzaType === type);
-
-    const availableSizes = pizzaSizes.map((pizzaSize) => ({
-        name: pizzaSize.name,
-        value: pizzaSize.value,
-        disabled: !filteredPizzasByType.some((filteredPizzasByType) => Number(filteredPizzasByType.size) == Number(pizzaSize.value)),
-    }));
-    //*
-
-    //* Логика отображения первой не disabled пиццы.
-    useEffect(() => {
-        const isAvailableSize = availableSizes.find((availableSize) => Number(availableSize.value) === size && !availableSize.disabled);
-
-        const availableSize = availableSizes.find((availableSize) => !availableSize.disabled);
-
-        if (!isAvailableSize && availableSize) {
-            setSize(Number(availableSize.value) as PizzaSize);
-        }
-    }, [type]);
-    //*
+    const { totalPizzaPrice, textDetaills } = getPizzaDetails(type, size, productItems, ingredients, selectedIngredients);
 
     const handleClickAdd = () => {
         console.log('handleClick');
