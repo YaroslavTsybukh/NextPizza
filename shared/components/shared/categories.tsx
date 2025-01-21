@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { useCategoryStore } from '@/shared/store/categories';
+import { useCategoryStore } from '@/shared/store';
 import { cn } from '@/shared/lib/utils';
 import { Category } from '@prisma/client';
 
@@ -14,18 +14,12 @@ export const Categories: FC<IProps> = ({ items, className }) => {
     const activeId = useCategoryStore((state) => state.activeId);
 
     return (
-        <div
-            className={cn(
-                'inline-flex gap-1 rounded-2xl bg-gray-50 p-1',
-                className,
-            )}
-        >
+        <div className={cn('inline-flex gap-1 rounded-2xl bg-gray-50 p-1', className)}>
             {items.map(({ name, id }, idx) => (
                 <a
                     className={cn(
                         'flex h-11 items-center rounded-2xl px-5 font-bold',
-                        activeId === id &&
-                            'bg-white text-primary shadow-md shadow-gray-200',
+                        activeId === id && 'bg-white text-primary shadow-md shadow-gray-200',
                     )}
                     href={`/#${name}`}
                     key={idx}

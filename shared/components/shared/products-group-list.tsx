@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
-import { useCategoryStore } from '@/shared/store/categories';
+import { useCategoryStore } from '@/shared/store';
 import { Title } from './title';
 import { ProductCard } from './product-card';
 import { cn } from '@/shared/lib/utils';
@@ -15,13 +15,7 @@ interface IProps {
     categoryId: number;
 }
 
-export const ProductsGroupList: FC<IProps> = ({
-    title,
-    items,
-    className,
-    listClassName,
-    categoryId,
-}) => {
+export const ProductsGroupList: FC<IProps> = ({ title, items, className, listClassName, categoryId }) => {
     const setActiveId = useCategoryStore((state) => state.setActiveId);
     const intersectionRef = useRef(null);
     const intersection = useIntersection(intersectionRef, {
@@ -38,13 +32,7 @@ export const ProductsGroupList: FC<IProps> = ({
 
             <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
                 {items.map((product, idx) => (
-                    <ProductCard
-                        key={idx}
-                        id={product.id}
-                        name={product.name}
-                        imageUrl={product.imageUrl}
-                        price={product.items[0].price}
-                    />
+                    <ProductCard key={idx} id={product.id} name={product.name} imageUrl={product.imageUrl} price={product.items[0].price} />
                 ))}
             </div>
         </div>
