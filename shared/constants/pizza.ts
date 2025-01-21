@@ -7,7 +7,7 @@ export const mapPizzaSize = {
 export const mapPizzaType = {
     1: 'Традиционная',
     2: 'Тонкая',
-};
+} as const;
 
 export const pizzaSizes = Object.entries(mapPizzaSize).map(([value, name]) => ({
     name,
