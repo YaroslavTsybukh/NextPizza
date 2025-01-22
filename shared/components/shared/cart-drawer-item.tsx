@@ -7,9 +7,10 @@ import * as CartItem from './cart-item-details';
 interface IProps extends ICartItemProps {
     className?: string;
     onClickCountButton: (type: 'plus' | 'minus') => void;
+    onClickRemove: () => void;
 }
 
-export const CartDrawerItem: FC<IProps> = ({ className, id, imageUrl, name, price, quantity, details, onClickCountButton }) => {
+export const CartDrawerItem: FC<IProps> = ({ className, id, imageUrl, name, price, quantity, details, onClickCountButton, onClickRemove }) => {
     return (
         <div className={cn('flex gap-6 bg-white p-5', className)}>
             <CartItem.Image src={imageUrl} />
@@ -22,7 +23,7 @@ export const CartDrawerItem: FC<IProps> = ({ className, id, imageUrl, name, pric
 
                     <div className="flex items-center gap-3">
                         <CartItem.Price value={price} />
-                        <Trash2Icon className="cursor-pointer text-gray-400 hover:text-gray-600" size={16} />
+                        <Trash2Icon onClick={onClickRemove} className="cursor-pointer text-gray-400 hover:text-gray-600" size={16} />
                     </div>
                 </div>
             </div>
