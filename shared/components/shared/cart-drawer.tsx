@@ -17,8 +17,13 @@ interface IProps {
 export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className }) => {
     const cartState = useCartStore((state) => state);
 
+    const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
+        const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+        cartState.updateItemQuantity(id, newQuantity);
+    };
+
     useEffect(() => {
-        cartState.fetchCartItems();
+        cartState.getCartItems();
     }, []);
 
     return (
@@ -28,7 +33,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
             <SheetContent className="flex flex-col justify-between bg-[#F4F1EE] pb-0">
                 <SheetHeader>
                     <SheetTitle>
-                        В корзине <span className="font-bold">3 товара</span>
+                        В корзине <span className="font-bold">{cartState.items.length} товара</span>
                     </SheetTitle>
                 </SheetHeader>
 
@@ -44,6 +49,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                                 name={item.name}
                                 price={item.price}
                                 quantity={item.quantity}
+                                onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
                             />
                         ))}
                     </div>
