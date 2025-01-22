@@ -50,6 +50,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                                 price={item.price}
                                 quantity={item.quantity}
                                 onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
+                                onClickRemove={() => cartState.removeCartItem(item.id)}
                             />
                         ))}
                     </div>
