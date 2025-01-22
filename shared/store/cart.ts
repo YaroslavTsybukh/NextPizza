@@ -10,7 +10,7 @@ export interface ICartState {
     items: ICartStateItem[];
 
     /* Получение товаров из корзины */
-    fetchCartItems: () => Promise<void>;
+    getCartItems: () => Promise<void>;
 
     /* Запрос на обновление количества товара */
     updateItemQuantity: (id: number, quantity: number) => Promise<void>;
@@ -29,10 +29,10 @@ export const useCartStore = create<ICartState>()((set) => ({
     totalAmount: 0,
     loading: false,
 
-    fetchCartItems: async () => {
+    getCartItems: async () => {
         try {
             set({ loading: true, error: false });
-            const totalCartDetails = await Api.cart.fetchCartItems();
+            const totalCartDetails = await Api.cart.getCartItems();
             set(getCartDetails(totalCartDetails));
         } catch (e) {
             if (e instanceof Error) {
@@ -40,10 +40,23 @@ export const useCartStore = create<ICartState>()((set) => ({
             }
             set({ error: true });
         } finally {
-            set({ loading: false, error: false });
+            set({ loading: false });
         }
     },
-    updateItemQuantity: async (id: number, quantity: number) => {},
+    updateItemQuantity: async (id: number, quantity: number) => {
+        try {
+            set({ loading: true, error: false });
+            const res = await Api.cart.updateItemQuantity(id, quantity);
+            set(getCartDetails(res));
+        } catch (e) {
+            if (e instanceof Error) {
+                console.log(e);
+            }
+            set({ error: true });
+        } finally {
+            set({ loading: false });
+        }
+    },
     addCartItem: async (values: any) => {},
     removeCartItem: async (id: number) => {},
 }));
