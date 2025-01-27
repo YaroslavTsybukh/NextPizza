@@ -13,32 +13,32 @@ import { Button } from '../ui/button';
 import { GroupVariants, Title, PizzaImage, IngredientItem } from '.';
 
 interface IProps {
+    className?: string;
     imageUrl: string;
     name: string;
     ingredients: Ingredient[];
     productItems: ProductItem[];
     // loading?: boolean;
-    className?: string;
+    onSubmit: (productItemId: number, ingredients: number[]) => void;
 }
 
 export const ChoosePizzaForm: FC<IProps> = ({
+    className,
     imageUrl,
     name,
     ingredients,
     productItems,
+    onSubmit,
     // loading,
-    className,
 }) => {
-    const { type, size, availableSizes, selectedIngredients, setSize, setType, addIngredient } = usePizzaOptions(productItems);
+    const { type, size, availableSizes, selectedIngredients, currentProductItemId, setSize, setType, addIngredient } = usePizzaOptions(productItems);
 
     const { totalPizzaPrice, textDetaills } = getPizzaDetails(type, size, productItems, ingredients, selectedIngredients);
 
     const handleClickAdd = () => {
-        console.log('handleClick');
-    };
-
-    const calcTotalPrice = () => {
-        console.log('calcTotalPrice');
+        if (currentProductItemId) {
+            onSubmit(currentProductItemId, Array.from(selectedIngredients));
+        }
     };
 
     return (

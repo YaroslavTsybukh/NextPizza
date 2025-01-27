@@ -3,6 +3,7 @@
 import { FC, PropsWithChildren, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { useShallow } from 'zustand/react/shallow';
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/shared/components/ui/sheet';
 import { useCartStore } from '@/shared/store';
 import { getCartItemDetails } from '@/shared/lib';
@@ -15,15 +16,17 @@ interface IProps {
 }
 
 export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className }) => {
-    const cartState = useCartStore((state) => state);
+    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem] = useCartStore(
+        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem]),
+    );
 
     const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
         const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
-        cartState.updateItemQuantity(id, newQuantity);
+        updateItemQuantity(id, newQuantity);
     };
 
     useEffect(() => {
-        cartState.getCartItems();
+        getCartItems();
     }, []);
 
     return (
@@ -33,16 +36,15 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
             <SheetContent className="flex flex-col justify-between bg-[#F4F1EE] pb-0">
                 <SheetHeader>
                     <SheetTitle>
-                        В корзине <span className="font-bold">{cartState.items.length} товара</span>
+                        В корзине <span className="font-bold">{items.length} товара</span>
                     </SheetTitle>
                 </SheetHeader>
 
                 {/* Items */}
                 <div className="scrollbar -mx-6 mt-5 flex-1 overflow-auto">
-                    <div className="mb-2">
-                        {cartState.items.map((item) => (
+                    {items.map((item) => (
+                        <div className="mb-2" key={item.id}>
                             <CartDrawerItem
-                                key={item.id}
                                 id={item.id}
                                 imageUrl={item.imageUrl}
                                 details={getCartItemDetails(item.pizzaType as PizzaType, item.pizzaSize as PizzaSize, item.ingredients)}
@@ -50,10 +52,10 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                                 price={item.price}
                                 quantity={item.quantity}
                                 onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
-                                onClickRemove={() => cartState.removeCartItem(item.id)}
+                                onClickRemove={() => removeCartItem(item.id)}
                             />
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
 
                 <SheetFooter className="-mx-6 bg-white p-8">
@@ -64,7 +66,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                                 <div className="relative -top-1 mx-2 flex-1 border-b border-dashed border-b-neutral-200" />
                             </span>
 
-                            <span className="text-lg font-bold">{cartState.totalAmount} грн</span>
+                            <span className="text-lg font-bold">{totalAmount} грн</span>
                         </div>
 
                         <Link href="/cart">
