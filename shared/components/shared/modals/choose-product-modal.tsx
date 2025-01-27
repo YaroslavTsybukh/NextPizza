@@ -2,20 +2,32 @@
 
 import { FC } from 'react';
 import { useRouter } from 'next/navigation';
+import { useShallow } from 'zustand/react/shallow';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import { ProductWithRelations } from '@/@types/prisma';
 import { cn } from '@/shared/lib/utils';
 import { Dialog, DialogContent, DialogTitle } from '../../ui/dialog';
 import { ChoosePizzaForm, ChooseProductForm } from '..';
+import { useCartStore } from '@/shared/store';
 
 interface IProps {
     product: ProductWithRelations;
     className?: string;
 }
 
-//TODO: отображать либо ChoosPizzaForm или ChooseProductForm
 export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
+    const [addCartItem] = useCartStore(useShallow((state) => [state.addCartItem]));
     const router = useRouter();
+    const firstItem = product.items[0];
+    const isPizzaForm = Boolean(firstItem.pizzaType);
+
+    const onAddPizza = (productItemId: number, ingredients: number[]) => {
+        addCartItem({ productItemId, ingredients });
+    };
+
+    const onAddProduct = () => {
+        addCartItem({ productItemId: firstItem.id });
+    };
 
     return (
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -23,7 +35,17 @@ export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
                 <DialogTitle />
             </VisuallyHidden.Root>
             <DialogContent className={cn('min-h-[500px] w-[1060px] max-w-[1060px] overflow-hidden bg-white p-0', className)}>
-                <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={product.ingredients} productItems={product.items} />
+                {isPizzaForm ? (
+                    <ChoosePizzaForm
+                        imageUrl={product.imageUrl}
+                        name={product.name}
+                        ingredients={product.ingredients}
+                        productItems={product.items}
+                        onSubmit={onAddPizza}
+                    />
+                ) : (
+                    <ChooseProductForm imageUrl={product.imageUrl} name={product.name} price={firstItem.price} onSubmit={onAddProduct} />
+                )}
             </DialogContent>
         </Dialog>
     );

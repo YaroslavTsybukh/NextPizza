@@ -10,3 +10,8 @@ export type ICartItemDTO = CartItem & {
 export interface ICartDTO extends Cart {
     items: ICartItemDTO[];
 }
+
+export interface ICreateCartItemValues {
+    productItemId: number;
+    ingredients?: number[];
+}
