@@ -9,6 +9,7 @@ import { cn } from '@/shared/lib/utils';
 import { Dialog, DialogContent, DialogTitle } from '../../ui/dialog';
 import { ChoosePizzaForm, ChooseProductForm } from '..';
 import { useCartStore } from '@/shared/store';
+import toast from 'react-hot-toast';
 
 interface IProps {
     product: ProductWithRelations;
@@ -21,8 +22,16 @@ export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
     const firstItem = product.items[0];
     const isPizzaForm = Boolean(firstItem.pizzaType);
 
-    const onAddPizza = (productItemId: number, ingredients: number[]) => {
-        addCartItem({ productItemId, ingredients });
+    const onAddPizza = async (productItemId: number, ingredients: number[]) => {
+        try {
+            await addCartItem({ productItemId, ingredients });
+            toast.success('Пицца добавлена в корзину');
+        } catch (e) {
+            if (e instanceof Error) {
+                toast.error('Не удалось добавить пиццу в корзину.');
+                console.error(e);
+            }
+        }
     };
 
     const onAddProduct = () => {
