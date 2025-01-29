@@ -14,13 +14,7 @@ interface IProps {
     className?: string;
 }
 
-export const ProductCard: FC<IProps> = ({
-    id,
-    name,
-    price,
-    imageUrl,
-    className,
-}) => {
+export const ProductCard: FC<IProps> = ({ id, name, price, imageUrl, className }) => {
     return (
         <div className={cn(className)}>
             <Link href={`/product/${id}`}>
@@ -30,14 +24,11 @@ export const ProductCard: FC<IProps> = ({
 
                 <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
 
-                <p className="text-sm text-gray-400">
-                    Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус,
-                    томаты, соус альфредо, чеснок
-                </p>
+                <p className="text-sm text-gray-400">Цыпленок, моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус альфредо, чеснок</p>
 
                 <div className="mt-4 flex items-center justify-between">
                     <span className="text-[20px]">
-                        от <b>{price} ₽</b>
+                        от <b>{price} грн</b>
                     </span>
 
                     <Button variant="secondary" className="text-base font-bold">

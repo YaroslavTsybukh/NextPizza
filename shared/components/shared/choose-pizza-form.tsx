@@ -18,19 +18,11 @@ interface IProps {
     name: string;
     ingredients: Ingredient[];
     productItems: ProductItem[];
-    // loading?: boolean;
+    loading?: boolean;
     onSubmit: (productItemId: number, ingredients: number[]) => void;
 }
 
-export const ChoosePizzaForm: FC<IProps> = ({
-    className,
-    imageUrl,
-    name,
-    ingredients,
-    productItems,
-    onSubmit,
-    // loading,
-}) => {
+export const ChoosePizzaForm: FC<IProps> = ({ className, imageUrl, name, ingredients, productItems, onSubmit, loading }) => {
     const { type, size, availableSizes, selectedIngredients, currentProductItemId, setSize, setType, addIngredient } = usePizzaOptions(productItems);
 
     const { totalPizzaPrice, textDetaills } = getPizzaDetails(type, size, productItems, ingredients, selectedIngredients);
@@ -72,11 +64,7 @@ export const ChoosePizzaForm: FC<IProps> = ({
                     </div>
                 </div>
 
-                <Button
-                    // loading={loading}
-                    onClick={handleClickAdd}
-                    className="mt-10 h-[55px] w-full rounded-[18px] px-10 text-base"
-                >
+                <Button loading={loading} onClick={handleClickAdd} className="mt-10 h-[55px] w-full rounded-[18px] px-10 text-base">
                     Добавить в корзину за {totalPizzaPrice} грн.
                 </Button>
             </div>

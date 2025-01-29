@@ -36,7 +36,7 @@ export const useCartStore = create<ICartState>()((set) => ({
             set(getCartDetails(totalCartDetails));
         } catch (e) {
             if (e instanceof Error) {
-                console.log(e);
+                console.error(e);
             }
             set({ error: true });
         } finally {
@@ -50,7 +50,7 @@ export const useCartStore = create<ICartState>()((set) => ({
             set(getCartDetails(res));
         } catch (e) {
             if (e instanceof Error) {
-                console.log(e);
+                console.error(e);
             }
             set({ error: true });
         } finally {
@@ -64,7 +64,7 @@ export const useCartStore = create<ICartState>()((set) => ({
             set(getCartDetails(res));
         } catch (e) {
             if (e instanceof Error) {
-                console.log(e);
+                console.error(e);
             }
             set({ error: true });
         } finally {
@@ -78,7 +78,7 @@ export const useCartStore = create<ICartState>()((set) => ({
             set(getCartDetails(res));
         } catch (e) {
             if (e instanceof Error) {
-                console.log(e);
+                console.error(e);
             }
             set({ error: true });
         } finally {

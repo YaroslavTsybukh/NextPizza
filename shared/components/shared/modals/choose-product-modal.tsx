@@ -17,25 +17,25 @@ interface IProps {
 }
 
 export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
-    const [addCartItem] = useCartStore(useShallow((state) => [state.addCartItem]));
+    const [addCartItem, loading] = useCartStore(useShallow((state) => [state.addCartItem, state.loading]));
     const router = useRouter();
     const firstItem = product.items[0];
     const isPizzaForm = Boolean(firstItem.pizzaType);
 
-    const onAddPizza = async (productItemId: number, ingredients: number[]) => {
+    const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
         try {
-            await addCartItem({ productItemId, ingredients });
-            toast.success('Пицца добавлена в корзину');
+            const itemId = productItemId ?? firstItem.id;
+
+            await addCartItem({ productItemId: itemId, ingredients });
+
+            toast.success(`${product.name} добавлена в корзину`);
+            router.back();
         } catch (e) {
             if (e instanceof Error) {
-                toast.error('Не удалось добавить пиццу в корзину.');
+                toast.error('Не удалось добавить товар в корзину.');
                 console.error(e);
             }
         }
-    };
-
-    const onAddProduct = () => {
-        addCartItem({ productItemId: firstItem.id });
     };
 
     return (
@@ -50,10 +50,17 @@ export const ChooseProductModal: FC<IProps> = ({ product, className }) => {
                         name={product.name}
                         ingredients={product.ingredients}
                         productItems={product.items}
-                        onSubmit={onAddPizza}
+                        onSubmit={onSubmit}
+                        loading={loading}
                     />
                 ) : (
-                    <ChooseProductForm imageUrl={product.imageUrl} name={product.name} price={firstItem.price} onSubmit={onAddProduct} />
+                    <ChooseProductForm
+                        imageUrl={product.imageUrl}
+                        name={product.name}
+                        price={firstItem.price}
+                        onSubmit={onSubmit}
+                        loading={loading}
+                    />
                 )}
             </DialogContent>
         </Dialog>
