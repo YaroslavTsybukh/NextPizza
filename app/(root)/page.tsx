@@ -1,10 +1,5 @@
-import {
-    Container,
-    Filters,
-    ProductsGroupList,
-    Title,
-    TopBar,
-} from '@/shared/components/shared';
+import { Suspense } from 'react';
+import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 
 export default async function HomePage() {
@@ -29,17 +24,14 @@ export default async function HomePage() {
 
             <Container className="my-14">
                 <div className="flex gap-[60px]">
-                    <Filters />
+                    <Suspense>
+                        <Filters />
+                    </Suspense>
 
                     <div className="flex-1">
                         <div className="flex flex-col gap-16">
                             {categories.map((category) => (
-                                <ProductsGroupList
-                                    key={category.id}
-                                    title={category.name}
-                                    items={category.products}
-                                    categoryId={category.id}
-                                />
+                                <ProductsGroupList key={category.id} title={category.name} items={category.products} categoryId={category.id} />
                             ))}
                         </div>
                     </div>
