@@ -1,5 +1,5 @@
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useSet } from 'react-use';
 
 interface IPricesProps {
@@ -24,13 +24,16 @@ export interface IFilters extends IFilter {
 export const useFilters = (): IFilters => {
     const searchParams = useSearchParams();
 
-    const [selectedIngredient, { toggle: toggleIngredient }] = useSet(new Set<string>(searchParams.get('ingredient')?.split(',')));
+    const [selectedIngredient, { toggle: toggleIngredient }] = useSet(new Set<string>(searchParams.get('ingredients')?.split(',')));
+
     const [selectedTypePizza, { toggle: toggleTypePizza }] = useSet(
         new Set<string>(searchParams.has('typePizza') ? searchParams.get('typePizza')?.split(',') : []),
     );
+
     const [selectedSizePizza, { toggle: toggleSizePizza }] = useSet(
         new Set<string>(searchParams.has('sizePizza') ? searchParams.get('sizePizza')?.split(',') : []),
     );
+
     const [prices, setPrice] = useState<IPricesProps>({
         priceFrom: Number(searchParams.get('priceFrom')) || undefined,
         priceTo: Number(searchParams.get('priceTo')) || undefined,
@@ -43,14 +46,17 @@ export const useFilters = (): IFilters => {
         }));
     };
 
-    return {
-        selectedIngredient,
-        selectedTypePizza,
-        selectedSizePizza,
-        prices,
-        toggleIngredient,
-        toggleTypePizza,
-        toggleSizePizza,
-        updatePrice,
-    };
+    return useMemo(
+        () => ({
+            selectedIngredient,
+            selectedTypePizza,
+            selectedSizePizza,
+            prices,
+            toggleIngredient,
+            toggleTypePizza,
+            toggleSizePizza,
+            updatePrice,
+        }),
+        [selectedIngredient, selectedTypePizza, selectedSizePizza, prices],
+    );
 };

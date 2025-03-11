@@ -11,7 +11,7 @@ export const useQueryFilters = (filter: IFilters) => {
             ...filter.prices,
             typePizza: Array.from(filter.selectedTypePizza),
             sizePizza: Array.from(filter.selectedSizePizza),
-            ingredient: Array.from(filter.selectedIngredient),
+            ingredients: Array.from(filter.selectedIngredient),
         };
 
         const urlParams = qs.stringify(obj, {
@@ -21,5 +21,5 @@ export const useQueryFilters = (filter: IFilters) => {
         router.push(`?${urlParams}`, {
             scroll: false,
         });
-    }, [filter, router]);
+    }, [filter]);
 };
