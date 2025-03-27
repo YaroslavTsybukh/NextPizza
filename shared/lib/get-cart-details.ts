@@ -9,7 +9,7 @@ export interface ICartStateItem {
     price: number;
     pizzaSize?: number | null;
     pizzaType?: number | null;
-    disabled?: false;
+    disabled?: boolean;
     ingredients: Array<{ name: string; price: number }>;
 }
 

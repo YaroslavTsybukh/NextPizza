@@ -10,9 +10,20 @@ interface IProps extends ICartItemProps {
     onClickRemove: () => void;
 }
 
-export const CartDrawerItem: FC<IProps> = ({ className, id, imageUrl, name, price, quantity, details, onClickCountButton, onClickRemove }) => {
+export const CartDrawerItem: FC<IProps> = ({
+    className,
+    id,
+    imageUrl,
+    name,
+    price,
+    quantity,
+    details,
+    disabled,
+    onClickCountButton,
+    onClickRemove,
+}) => {
     return (
-        <div className={cn('flex gap-6 bg-white p-5', className)}>
+        <div className={cn('flex gap-6 bg-white p-5', { 'pointer-events-none opacity-50': disabled }, className)}>
             <CartItem.Image src={imageUrl} />
             <div className="flex-1">
                 <CartItem.Info name={name} details={details} />
