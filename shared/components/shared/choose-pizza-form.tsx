@@ -37,7 +37,7 @@ export const ChoosePizzaForm: FC<IProps> = ({ className, imageUrl, name, ingredi
         <div className={cn(className, 'flex flex-1')}>
             <PizzaImage src={imageUrl} size={size} />
 
-            <div className="w-[490px] bg-[#f7f6f5] p-7">
+            <div className="w-[490px] rounded-lg bg-[#f7f6f5] p-7">
                 <Title text={name} size="lg" className="mb-1 font-extrabold" />
 
                 <p className="text-gray-400">{textDetaills}</p>

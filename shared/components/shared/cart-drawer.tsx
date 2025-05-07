@@ -52,7 +52,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                             {/* <Title size="sm" text="Корзина пустая" className="my-2 text-center font-bold" /> */}
 
                             {
-                                //TODO: добавить стилей для тайтла.
+                                //TODO: добавить стилей для тайтла. Исправить фон для элемента когда корзина пустая.
                             }
                             <SheetTitle>Корзина пустая</SheetTitle>
                             <p className="mb-5 text-center text-neutral-500">Добавьте хотя бы одну пиццу, чтобы совершить заказ</p>

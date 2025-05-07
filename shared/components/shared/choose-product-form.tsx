@@ -20,7 +20,7 @@ export const ChooseProductForm: FC<IProps> = ({ name, imageUrl, price, onSubmit,
                 {/* <PizzaImage src={imageUrl} size={size} /> */}
             </div>
 
-            <div className="w-[490px] bg-[#f7f6f5] p-7">
+            <div className="w-[490px] rounded-lg bg-[#f7f6f5] p-7">
                 <Title text={name} size="md" className="mb-1 font-extrabold" />
 
                 <Button loading={loading} onClick={() => onSubmit?.()} className="mt-10 h-[55px] w-full rounded-[18px] px-10 text-base">
