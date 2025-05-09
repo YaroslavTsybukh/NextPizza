@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
-import { Title, WhiteBlock } from '@/shared/components/shared';
+import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
+import { Title, WhiteBlock, CheckoutItemDetails } from '@/shared/components/shared';
 import { Input } from '@/shared/components/ui/input';
 import { Textarea } from '@/shared/components/ui/textarea';
+import { Button } from '@/shared/components/ui/button';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
     return (
@@ -30,7 +32,49 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
                 </div>
 
                 {/* Правая часть */}
-                <div className="w-[450px]">Right side</div>
+                <div className="w-[450px]">
+                    <WhiteBlock className="sticky top-4 p-6">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-xl">Итого</span>
+                            <span className="text-[34px] font-extrabold">1500 грн</span>
+                        </div>
+
+                        <CheckoutItemDetails
+                            title={
+                                <div className="flex items-center">
+                                    <Package size={18} className="mr-2 text-gray-400" />
+                                    <p>Стоиомсть товаров:</p>
+                                </div>
+                            }
+                            value="500 грн"
+                        />
+
+                        <CheckoutItemDetails
+                            title={
+                                <div className="flex items-center">
+                                    <Percent size={18} className="mr-2 text-gray-400" />
+                                    <p>Налоги:</p>
+                                </div>
+                            }
+                            value="500 грн"
+                        />
+
+                        <CheckoutItemDetails
+                            title={
+                                <div className="flex items-center">
+                                    <Truck size={18} className="mr-2 text-gray-400" />
+                                    <p>Доставка:</p>
+                                </div>
+                            }
+                            value="500 грн"
+                        />
+
+                        <Button type="submit" className="mt-6 h-14 w-full rounded-2xl text-base font-bold">
+                            Перейти к оплате
+                            <ArrowRight className="ml-2 w-5" />
+                        </Button>
+                    </WhiteBlock>
+                </div>
             </div>
         </>
     );
