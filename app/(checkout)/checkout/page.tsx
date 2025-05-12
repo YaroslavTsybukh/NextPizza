@@ -1,28 +1,18 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
-import { useShallow } from 'zustand/react/shallow';
+
 import { Title, WhiteBlock, CheckoutItemDetails, CheckoutItem } from '@/shared/components/shared';
 import { Input } from '@/shared/components/ui/input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Button } from '@/shared/components/ui/button';
-import { useCartStore } from '@/shared/store';
 import { getCartItemDetails } from '@/shared/lib';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
+import { useCart } from '@/shared/hooks';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
-    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem] = useCartStore(
-        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem]),
-    );
-
-    const onClickCountButton = (id: number, quantity: number, type: string) => {
-        const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
-        updateItemQuantity(id, newQuantity);
-    };
-    useEffect(() => {
-        getCartItems();
-    }, []);
+    const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();
 
     return (
         <>

@@ -1,36 +1,24 @@
 'use client';
 
-import { FC, PropsWithChildren, useEffect } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useShallow } from 'zustand/react/shallow';
 
+import { CartDrawerItem } from '.';
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/shared/components/ui/sheet';
 import { Button } from '@/shared/components/ui/button';
-import { useCartStore } from '@/shared/store';
 import { getCartItemDetails } from '@/shared/lib';
 import { cn } from '@/shared/lib/utils';
-import { CartDrawerItem, Title } from '.';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
+import { useCart } from '@/shared/hooks';
 
 interface IProps {
     className?: string;
 }
 
 export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className }) => {
-    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem] = useCartStore(
-        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem]),
-    );
-
-    const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
-        const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
-        updateItemQuantity(id, newQuantity);
-    };
-
-    useEffect(() => {
-        getCartItems();
-    }, []);
+    const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();
 
     return (
         <Sheet>
