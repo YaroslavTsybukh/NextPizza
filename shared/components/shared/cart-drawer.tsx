@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -18,6 +18,7 @@ interface IProps {
 }
 
 export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className }) => {
+    const [redirecting, setRedirecting] = useState<boolean>(false);
     const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();
 
     return (
@@ -85,8 +86,13 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                                         <span className="text-lg font-bold">{totalAmount} грн</span>
                                     </div>
 
-                                    <Link href="/cart">
-                                        <Button type="submit" className="h-12 w-full text-base">
+                                    <Link href="/checkout">
+                                        <Button
+                                            onClick={() => setRedirecting(true)}
+                                            loading={redirecting}
+                                            type="submit"
+                                            className="h-12 w-full text-base"
+                                        >
                                             Оформить заказ
                                             <ArrowRight className="ml-2 w-5" />
                                         </Button>
