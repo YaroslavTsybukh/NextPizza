@@ -1,18 +1,53 @@
-import { ReactNode } from 'react';
+'use client';
+
+import { ReactNode, useEffect } from 'react';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
-import { Title, WhiteBlock, CheckoutItemDetails } from '@/shared/components/shared';
+import { useShallow } from 'zustand/react/shallow';
+import { Title, WhiteBlock, CheckoutItemDetails, CheckoutItem } from '@/shared/components/shared';
 import { Input } from '@/shared/components/ui/input';
 import { Textarea } from '@/shared/components/ui/textarea';
 import { Button } from '@/shared/components/ui/button';
+import { useCartStore } from '@/shared/store';
+import { getCartItemDetails } from '@/shared/lib';
+import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
+    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem] = useCartStore(
+        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem]),
+    );
+
+    const onClickCountButton = (id: number, quantity: number, type: string) => {
+        const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+        updateItemQuantity(id, newQuantity);
+    };
+    useEffect(() => {
+        getCartItems();
+    }, []);
+
     return (
         <>
             <Title text="Оформление заказа" className="py-8 text-[36px] font-extrabold" />
             <div className="flex gap-10">
                 {/* Левая часть */}
                 <div className="mb-20 flex flex-1 flex-col gap-10">
-                    <WhiteBlock title="1. Корзина">Lorem ipsum</WhiteBlock>
+                    <WhiteBlock title="1. Корзина">
+                        <div className="flex flex-col gap-5">
+                            {items.map((item) => (
+                                <CheckoutItem
+                                    key={item.id}
+                                    id={item.id}
+                                    imageUrl={item.imageUrl}
+                                    details={getCartItemDetails(item.pizzaType as PizzaType, item.pizzaSize as PizzaSize, item.ingredients)}
+                                    name={item.name}
+                                    price={item.price}
+                                    quantity={item.quantity}
+                                    disabled={item.disabled}
+                                    onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
+                                    onClickRemove={() => removeCartItem(item.id)}
+                                />
+                            ))}
+                        </div>
+                    </WhiteBlock>
 
                     <WhiteBlock title="2. Персональная информация">
                         <div className="grid grid-cols-2 gap-5">
@@ -43,7 +78,7 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
                             title={
                                 <div className="flex items-center">
                                     <Package size={18} className="mr-2 text-gray-400" />
-                                    <p>Стоиомсть товаров:</p>
+                                    <p>Стоиомсть корзины:</p>
                                 </div>
                             }
                             value="500 грн"

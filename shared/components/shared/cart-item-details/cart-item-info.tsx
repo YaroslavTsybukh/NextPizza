@@ -4,12 +4,12 @@ import { cn } from '@/shared/lib/utils';
 import { mapPizzaType, PizzaSize, PizzaType } from '@/shared/constants/pizza';
 
 interface IProps {
-    className?: string;
     name: string;
     details: string;
+    className?: string;
 }
 
-export const CartItemInfo: FC<IProps> = ({ className, name, details }) => {
+export const CartItemInfo: FC<IProps> = ({ name, details, className }) => {
     return (
         <div>
             <div className={cn('flex items-center justify-between', className)}>
