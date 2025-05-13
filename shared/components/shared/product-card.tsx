@@ -1,11 +1,12 @@
-import { cn } from '@/shared/lib/utils';
-import Link from 'next/link';
 import { FC } from 'react';
-import Image from 'next/image';
 import { Plus } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Title } from './title';
+import Link from 'next/link';
+import Image from 'next/image';
+
 import { Ingredient } from '@prisma/client';
+import { cn } from '@/shared/lib/utils';
+import { Button } from '../ui';
+import { Title } from '.';
 
 interface IProps {
     id: number;

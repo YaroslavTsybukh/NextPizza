@@ -2,9 +2,8 @@
 
 import { FC, useState, ChangeEvent } from 'react';
 
+import { Input, Skeleton } from '../ui';
 import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox';
-import { Input } from '../ui/input';
-import { Skeleton } from '../ui/skeleton';
 
 type Item = FilterCheckboxProps;
 
@@ -43,9 +42,7 @@ export const CheckboxFiltersGroup: FC<Props> = ({
     };
 
     const list = showAll
-        ? items.filter((item) =>
-              item.text.toLowerCase().includes(searchValue.toLowerCase()),
-          )
+        ? items.filter((item) => item.text.toLowerCase().includes(searchValue.toLowerCase()))
         : (defaultItems || items).slice(0, limit);
 
     if (loading) {
@@ -68,11 +65,7 @@ export const CheckboxFiltersGroup: FC<Props> = ({
 
             {showAll && (
                 <div className="mb-5">
-                    <Input
-                        placeholder={searchInputPlaceholder}
-                        className="border-none bg-gray-50"
-                        onChange={onChangeSearchInput}
-                    />
+                    <Input placeholder={searchInputPlaceholder} className="border-none bg-gray-50" onChange={onChangeSearchInput} />
                 </div>
             )}
 
@@ -91,15 +84,8 @@ export const CheckboxFiltersGroup: FC<Props> = ({
             </div>
 
             {items.length > limit && (
-                <div
-                    className={
-                        showAll ? 'mt-4 border-t border-t-neutral-100' : ''
-                    }
-                >
-                    <button
-                        onClick={() => setShowAll(!showAll)}
-                        className="mt-3 text-primary"
-                    >
+                <div className={showAll ? 'mt-4 border-t border-t-neutral-100' : ''}>
+                    <button onClick={() => setShowAll(!showAll)} className="mt-3 text-primary">
                         {showAll ? 'Скрыть' : '+ Показать все'}
                     </button>
                 </div>

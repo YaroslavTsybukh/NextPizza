@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { Button } from '../ui/button';
-import { cn } from '@/shared/lib/utils';
 import { Minus, Plus } from 'lucide-react';
+
+import { cn } from '@/shared/lib/utils';
+import { Button } from '../ui';
 
 interface IProps {
     size?: 'sm' | 'lg';

@@ -5,13 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-import { CartDrawerItem } from '.';
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/shared/components/ui/sheet';
-import { Button } from '@/shared/components/ui/button';
-import { getCartItemDetails } from '@/shared/lib';
 import { cn } from '@/shared/lib/utils';
+import { getCartItemDetails } from '@/shared/lib';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 import { useCart } from '@/shared/hooks';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Button } from '@/shared/components/ui';
+import { CartDrawerItem } from '.';
 
 interface IProps {
     className?: string;
