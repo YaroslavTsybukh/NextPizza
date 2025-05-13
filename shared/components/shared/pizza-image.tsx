@@ -1,6 +1,7 @@
-import { cn } from '@/shared/lib/utils';
-import Image from 'next/image';
 import { FC } from 'react';
+import Image from 'next/image';
+
+import { cn } from '@/shared/lib/utils';
 
 enum Size {
     Small = 20,
@@ -16,19 +17,10 @@ interface IProps {
 
 export const PizzaImage: FC<IProps> = ({ className, src, size }) => {
     return (
-        <div
-            className={cn(
-                'relative flex w-full flex-1 items-center justify-center',
-                className,
-            )}
-        >
+        <div className={cn('relative flex w-full flex-1 items-center justify-center', className)}>
             <Image
-                width={
-                    size === Size.Small ? 300 : size === Size.Middle ? 400 : 500
-                }
-                height={
-                    size === Size.Small ? 300 : size === Size.Middle ? 400 : 500
-                }
+                width={size === Size.Small ? 300 : size === Size.Middle ? 400 : 500}
+                height={size === Size.Small ? 300 : size === Size.Middle ? 400 : 500}
                 src={src}
                 alt="Logo"
                 className="relative left-2 top-2 z-10 transition-all duration-300"

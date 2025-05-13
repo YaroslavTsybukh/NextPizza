@@ -28,3 +28,5 @@ export { CheckoutItem } from './checkout-item';
 export { CheckoutItemSkeleton } from './checkout-item-skeleton';
 export { CheckoutSidebar } from './checkout-sidebar';
 export * from './modals';
+
+export type { FilterCheckboxProps } from './filter-checkbox';

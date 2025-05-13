@@ -1,7 +1,6 @@
 import { FC } from 'react';
-import { Ingredient } from '@prisma/client';
+
 import { cn } from '@/shared/lib/utils';
-import { mapPizzaType, PizzaSize, PizzaType } from '@/shared/constants/pizza';
 
 interface IProps {
     name: string;

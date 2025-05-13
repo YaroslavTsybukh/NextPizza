@@ -3,7 +3,7 @@
 import { FC, useState, ChangeEvent } from 'react';
 
 import { Input, Skeleton } from '../ui';
-import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox';
+import { FilterCheckbox, FilterCheckboxProps } from '.';
 
 type Item = FilterCheckboxProps;
 

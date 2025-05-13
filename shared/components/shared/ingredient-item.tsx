@@ -1,7 +1,8 @@
-import { cn } from '@/shared/lib/utils';
-import { CircleCheck } from 'lucide-react';
-import Image from 'next/image';
 import { FC } from 'react';
+import Image from 'next/image';
+import { CircleCheck } from 'lucide-react';
+
+import { cn } from '@/shared/lib/utils';
 
 interface IProps {
     name: string;
@@ -12,14 +13,7 @@ interface IProps {
     className?: string;
 }
 
-export const IngredientItem: FC<IProps> = ({
-    name,
-    price,
-    imageUrl,
-    onClick,
-    active,
-    className,
-}) => {
+export const IngredientItem: FC<IProps> = ({ name, price, imageUrl, onClick, active, className }) => {
     return (
         <div
             className={cn(
@@ -29,9 +23,7 @@ export const IngredientItem: FC<IProps> = ({
             )}
             onClick={onClick}
         >
-            {active && (
-                <CircleCheck className="absolute right-2 top-2 text-primary" />
-            )}
+            {active && <CircleCheck className="absolute right-2 top-2 text-primary" />}
             <Image src={imageUrl} width={110} height={110} alt={name} />
             <span className="mb-1 text-xs">{name}</span>
             <span className="font-bold">{price}</span>
