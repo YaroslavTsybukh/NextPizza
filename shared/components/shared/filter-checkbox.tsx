@@ -1,5 +1,6 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
-import { Checkbox } from '../ui/checkbox';
+import { FC, ReactNode } from 'react';
+
+import { Checkbox } from '../ui';
 
 export interface FilterCheckboxProps {
     text: string;
@@ -10,14 +11,7 @@ export interface FilterCheckboxProps {
     name?: string;
 }
 
-export const FilterCheckbox: FC<FilterCheckboxProps> = ({
-    text,
-    value,
-    endAdornment,
-    onCheckedChange,
-    checked,
-    name,
-}) => {
+export const FilterCheckbox: FC<FilterCheckboxProps> = ({ text, value, endAdornment, onCheckedChange, checked, name }) => {
     return (
         <div className="flex items-center space-x-2">
             <Checkbox
@@ -27,10 +21,7 @@ export const FilterCheckbox: FC<FilterCheckboxProps> = ({
                 className="h-6 w-6 rounded-[8px]"
                 id={`checkbox-${name}-${value}`}
             />
-            <label
-                htmlFor={`checkbox-${name}-${value}`}
-                className="flex-1 cursor-pointer leading-none"
-            >
+            <label htmlFor={`checkbox-${name}-${value}`} className="flex-1 cursor-pointer leading-none">
                 {text}
             </label>
             {endAdornment}

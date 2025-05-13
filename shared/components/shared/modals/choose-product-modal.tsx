@@ -3,9 +3,10 @@
 import { FC } from 'react';
 import { useRouter } from 'next/navigation';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+
 import { ProductWithRelations } from '@/@types/prisma';
 import { cn } from '@/shared/lib/utils';
-import { Dialog, DialogContent, DialogTitle } from '../../ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '../../ui';
 import { ProductForm } from '..';
 
 interface IProps {

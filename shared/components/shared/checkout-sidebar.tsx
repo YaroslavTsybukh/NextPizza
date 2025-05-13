@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
+
 import { cn } from '@/shared/lib/utils';
+import { Button } from '../ui';
 import { CheckoutItemDetails, WhiteBlock } from '.';
-import { Button } from '../ui/button';
 
 interface IProps {
     totalAmount: number;

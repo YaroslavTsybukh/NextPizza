@@ -2,11 +2,11 @@
 
 import { FC } from 'react';
 import { ArrowRight, Car, ShoppingCart } from 'lucide-react';
-import { CartDrawer } from '.';
-import { Button } from '../ui/button';
+import { useShallow } from 'zustand/react/shallow';
 import { cn } from '@/shared/lib/utils';
 import { useCartStore } from '@/shared/store';
-import { useShallow } from 'zustand/react/shallow';
+import { Button } from '../ui';
+import { CartDrawer } from '.';
 
 interface IProps {
     className?: string;

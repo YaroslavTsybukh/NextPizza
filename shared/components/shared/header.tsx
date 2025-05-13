@@ -2,9 +2,10 @@ import { FC } from 'react';
 import { User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { cn } from '@/shared/lib/utils';
+import { Button } from '../ui';
 import { Container, SearchInput, CartButton } from '.';
-import { Button } from '../ui/button';
 
 interface IProps {
     hasSearch?: boolean;

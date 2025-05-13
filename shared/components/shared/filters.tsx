@@ -1,12 +1,10 @@
 'use client';
 
 import { FC } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Title } from './title';
-import { RangeSlider } from './range-slider';
-import { CheckboxFiltersGroup } from './checkbox-filters-group';
-import { Input } from '../ui/input';
+
 import { useFilters, useIngredient, useQueryFilters } from '@/shared/hooks';
+import { Input } from '../ui';
+import { Title, RangeSlider, CheckboxFiltersGroup } from '.';
 
 export const Filters: FC = () => {
     const { loading, ingredients } = useIngredient();
@@ -26,10 +24,7 @@ export const Filters: FC = () => {
 
     return (
         <div className="w-[250px]">
-            <Title
-                text="Фильтрация"
-                className="mb-5 border-b border-b-neutral-100 pb-4 font-bold"
-            />
+            <Title text="Фильтрация" className="mb-5 border-b border-b-neutral-100 pb-4 font-bold" />
 
             <CheckboxFiltersGroup
                 title="Тип теста"
@@ -63,12 +58,7 @@ export const Filters: FC = () => {
                         max={1000}
                         value={filter.prices.priceFrom}
                         placeholder="0"
-                        onChange={(e) =>
-                            filter.updatePrice(
-                                'priceFrom',
-                                Number(e.target.value),
-                            )
-                        }
+                        onChange={(e) => filter.updatePrice('priceFrom', Number(e.target.value))}
                     />
                     <Input
                         type="number"
@@ -77,10 +67,7 @@ export const Filters: FC = () => {
                         value={filter.prices.priceTo}
                         placeholder="1000"
                         onChange={(e) => {
-                            filter.updatePrice(
-                                'priceTo',
-                                Number(e.target.value),
-                            );
+                            filter.updatePrice('priceTo', Number(e.target.value));
                         }}
                     />
                 </div>
@@ -88,10 +75,7 @@ export const Filters: FC = () => {
                     min={0}
                     max={1000}
                     step={10}
-                    value={[
-                        filter.prices.priceFrom || 0,
-                        filter.prices.priceTo || 1000,
-                    ]}
+                    value={[filter.prices.priceFrom || 0, filter.prices.priceTo || 1000]}
                     onValueChange={updatePrice}
                 />
             </div>
