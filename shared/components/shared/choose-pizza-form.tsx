@@ -7,7 +7,6 @@ import { cn } from '@/shared/lib/utils';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
 import { getPizzaDetails } from '@/shared/lib';
 import { usePizzaOptions } from '@/shared/hooks';
-
 import { Button } from '../ui';
 import { GroupVariants, Title, PizzaImage, IngredientItem } from '.';
 

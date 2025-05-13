@@ -1,12 +1,13 @@
 'use client';
 
-import { cn } from '@/shared/lib/utils';
+import { FC, useState, useRef, ChangeEvent } from 'react';
+import { useClickAway, useDebounce } from 'react-use';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FC, useState, useRef, useEffect, ChangeEvent } from 'react';
-import { useClickAway, useDebounce } from 'react-use';
 import { Product } from '@prisma/client';
+
+import { cn } from '@/shared/lib/utils';
 import { Api } from '@/shared/services/api-client';
 
 interface IProps {
@@ -45,17 +46,9 @@ export const SearchInput: FC<IProps> = ({ className }) => {
 
     return (
         <>
-            {focused && (
-                <div className="fixed bottom-0 left-0 right-0 top-0 z-30 bg-black/50" />
-            )}
+            {focused && <div className="fixed bottom-0 left-0 right-0 top-0 z-30 bg-black/50" />}
 
-            <div
-                ref={ref}
-                className={cn(
-                    'relative z-30 flex h-11 flex-1 justify-between rounded-2xl',
-                    className,
-                )}
-            >
+            <div ref={ref} className={cn('relative z-30 flex h-11 flex-1 justify-between rounded-2xl', className)}>
                 <Search className="absolute left-3 top-1/2 h-5 translate-y-[-50%] text-gray-400" />
                 <input
                     className="w-full rounded-2xl bg-gray-100 pl-11 outline-none"
@@ -79,13 +72,7 @@ export const SearchInput: FC<IProps> = ({ className }) => {
                                 key={product.id}
                                 onClick={handleClickOnItem}
                             >
-                                <Image
-                                    className="rounded-sm"
-                                    width={32}
-                                    height={32}
-                                    src={product.imageUrl}
-                                    alt={`image ${product.id}`}
-                                />
+                                <Image className="rounded-sm" width={32} height={32} src={product.imageUrl} alt={`image ${product.id}`} />
                                 <span>{product.name}</span>
                             </Link>
                         ))}

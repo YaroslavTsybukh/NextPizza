@@ -1,8 +1,9 @@
 'use client';
 
 import { FC } from 'react';
-import { ArrowRight, Car, ShoppingCart } from 'lucide-react';
+import { ArrowRight, ShoppingCart } from 'lucide-react';
 import { useShallow } from 'zustand/react/shallow';
+
 import { cn } from '@/shared/lib/utils';
 import { useCartStore } from '@/shared/store';
 import { Button } from '../ui';

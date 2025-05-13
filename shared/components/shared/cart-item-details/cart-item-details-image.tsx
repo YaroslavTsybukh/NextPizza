@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
+
 import { cn } from '@/shared/lib/utils';
 
 interface IProps {

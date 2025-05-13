@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Trash2Icon } from 'lucide-react';
+
 import { cn } from '@/shared/lib/utils';
 import { ICartItemProps } from '@/@types/cart-item-details';
 import * as CartItem from './cart-item-details';

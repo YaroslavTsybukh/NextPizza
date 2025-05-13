@@ -2,11 +2,11 @@
 
 import { FC, useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
-import { useCategoryStore } from '@/shared/store';
-import { Title } from './title';
-import { ProductCard } from './product-card';
-import { cn } from '@/shared/lib/utils';
+
 import { ProductWithRelations } from '@/@types/prisma';
+import { useCategoryStore } from '@/shared/store';
+import { cn } from '@/shared/lib/utils';
+import { Title, ProductCard } from '.';
 
 interface IProps {
     title: string;
