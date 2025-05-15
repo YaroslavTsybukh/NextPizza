@@ -3,6 +3,7 @@
 import { ReactNode } from 'react';
 
 import { Title, WhiteBlock, CheckoutItem, CheckoutSidebar } from '@/shared/components/shared';
+import { FormInput } from '@/shared/components/shared/form';
 import { Input, Textarea } from '@/shared/components/ui';
 import { getCartItemDetails } from '@/shared/lib';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
@@ -38,10 +39,10 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
 
                     <WhiteBlock title="2. Персональная информация">
                         <div className="grid grid-cols-2 gap-5">
-                            <Input name="firstName" className="text-base" placeholder="Имя" />
-                            <Input name="lastname" className="text-base" placeholder="Фамилия" />
-                            <Input name="email" className="text-base" placeholder="E-mail" />
-                            <Input name="phone" className="text-base" placeholder="Телефон" />
+                            <FormInput name="firstName" className="text-base" placeholder="Имя" />
+                            <FormInput name="lastname" className="text-base" placeholder="Фамилия" />
+                            <FormInput name="email" className="text-base" placeholder="E-mail" />
+                            <FormInput name="phone" className="text-base" placeholder="Телефон" />
                         </div>
                     </WhiteBlock>
 
