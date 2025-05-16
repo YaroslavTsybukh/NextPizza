@@ -1,5 +1,5 @@
 import { ICartStateItem } from './get-cart-details';
-import { mapPizzaType, PizzaSize, PizzaType } from '../constants/pizza';
+import { mapPizzaType, PizzaSize, PizzaType } from '../constants';
 
 export const getCartItemDetails = (pizzaType: PizzaType, pizzaSize: PizzaSize, ingredients: ICartStateItem['ingredients']): string => {
     const details = [];

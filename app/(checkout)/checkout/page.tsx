@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Title, CheckoutSidebar, CheckoutCart, CheckoutPersonalForm, CheckoutAddressForm } from '@/shared/components/shared';
 import { useCart } from '@/shared/hooks';
-import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants/checkout-form-schema';
+import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
     const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();

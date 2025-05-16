@@ -4,7 +4,7 @@ import { FC } from 'react';
 import { Ingredient, ProductItem } from '@prisma/client';
 
 import { cn } from '@/shared/lib/utils';
-import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants/pizza';
+import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants';
 import { getPizzaDetails } from '@/shared/lib';
 import { usePizzaOptions } from '@/shared/hooks';
 import { Button } from '../ui';
