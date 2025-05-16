@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
+import { PizzaSize, PizzaType } from '@/shared/constants';
 import { getCartItemDetails } from '@/shared/lib';
 import { ICartStateItem } from '@/shared/lib/get-cart-details';
 import { CheckoutItem, WhiteBlock } from '../';

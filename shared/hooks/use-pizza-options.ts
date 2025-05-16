@@ -4,7 +4,7 @@ import { useSet } from 'react-use';
 import { ProductItem } from '@prisma/client';
 
 import { Variant } from '../components/shared/group-variants';
-import { PizzaSize, PizzaType } from '../constants/pizza';
+import { PizzaSize, PizzaType } from '../constants';
 import { getAvailablePizzaSizes } from '../lib';
 
 interface IReturnValues {
