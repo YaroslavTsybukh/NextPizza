@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Input, Textarea } from '../../ui';
-import { WhiteBlock } from '../';
+import { Input } from '../../ui';
+import { FormTextArea, WhiteBlock } from '../';
 
 interface IProps {
     className?: string;
@@ -12,7 +12,8 @@ export const CheckoutAddressForm: FC<IProps> = ({ className }) => {
         <WhiteBlock title="3. Адрес доставки" className={className}>
             <div className="flex flex-col gap-5">
                 <Input name="address" className="text-base" placeholder="Укажите адресс" />
-                <Textarea className="text-base" placeholder="Укажите комментарий к заказу" rows={5} />
+
+                <FormTextArea name="comment" className="text-base" placeholder="Укажите комментарий к заказу" rows={5} />
             </div>
         </WhiteBlock>
     );

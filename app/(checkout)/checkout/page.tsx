@@ -19,6 +19,7 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
             email: '',
             phone: '',
             address: '',
+            comment: '',
         },
     });
 
