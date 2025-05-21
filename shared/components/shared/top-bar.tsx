@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Category } from '@prisma/client';
 
 import { cn } from '@/shared/lib/utils';
-import { Container, Categories, SortPopup } from '.';
+import { Container, Categories, SortPopup } from '@/shared/components';
 
 interface IProps {
     categories: Category[];

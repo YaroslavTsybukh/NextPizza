@@ -1,5 +1,5 @@
 import { Nunito } from 'next/font/google';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import './globals.css';
 

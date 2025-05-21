@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/shared/lib/utils';
-import { Button } from '../ui';
-import { Container, SearchInput, CartButton } from '.';
+import { Button, Container, SearchInput, CartButton } from '@/shared/components';
 
 interface IProps {
     hasSearch?: boolean;

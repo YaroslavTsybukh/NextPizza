@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
-import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components/shared';
-import { IGetSearchParams, findPizzas } from '@/shared/lib/find-pizzas';
+
+import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/shared/components';
+import { IGetSearchParams, findPizzas } from '@/shared/lib';
 
 export default async function HomePage({ searchParams }: { searchParams: IGetSearchParams }) {
     const categories = await findPizzas(searchParams);

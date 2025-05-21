@@ -35,3 +35,4 @@ export * from './checkout';
 export * from './form';
 
 export type { FilterCheckboxProps } from './filter-checkbox';
+export type { Variant } from './group-variants';

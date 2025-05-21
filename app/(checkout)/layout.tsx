@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Container, Header } from '@/shared/components/shared';
+
+import { Container, Header } from '@/shared/components';
 
 export default function CheckoutLayout({ children }: { children: ReactNode }) {
     return (

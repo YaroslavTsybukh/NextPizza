@@ -5,8 +5,7 @@ import Image from 'next/image';
 
 import { Ingredient } from '@prisma/client';
 import { cn } from '@/shared/lib/utils';
-import { Button } from '../ui';
-import { Title } from '.';
+import { Button, Title } from '@/shared/components';
 
 interface IProps {
     id: number;

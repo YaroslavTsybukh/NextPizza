@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Ingredient } from '@prisma/client';
 import axios from 'axios';
+import { Ingredient } from '@prisma/client';
 import { Api } from '@/shared/services/api-client';
 
 interface ReturnValues {

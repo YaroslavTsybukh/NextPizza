@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from 'react';
 
 import { cn } from '@/shared/lib/utils';
-import { Title } from '.';
+import { Title } from '@/shared/components';
 
 interface IProps {
     title?: string;

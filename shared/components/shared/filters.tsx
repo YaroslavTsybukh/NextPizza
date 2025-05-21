@@ -3,8 +3,7 @@
 import { FC } from 'react';
 
 import { useFilters, useIngredient, useQueryFilters } from '@/shared/hooks';
-import { Input } from '../ui';
-import { Title, RangeSlider, CheckboxFiltersGroup } from '.';
+import { Input, Title, RangeSlider, CheckboxFiltersGroup } from '@/shared/components';
 
 export const Filters: FC = () => {
     const { loading, ingredients } = useIngredient();

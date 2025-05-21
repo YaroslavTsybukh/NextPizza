@@ -1,8 +1,7 @@
 import { FC, TextareaHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Textarea } from '../../ui';
-import { ClearButton } from '../';
+import { Textarea, ClearButton } from '@/shared/components';
 
 interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     name: string;

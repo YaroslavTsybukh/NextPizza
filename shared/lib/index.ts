@@ -6,6 +6,9 @@ export { getCartDetails } from './get-cart-details';
 export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
 export { findPizzas } from './find-pizzas';
 
+export type { IGetSearchParams } from './find-pizzas';
+export type { ICartStateItem } from './get-cart-details';
+
 //Server functions
 export { updateCartTotalAmount } from './update-cart-total-amount';
 export { findOrCreateCart } from './findOrCreateCart';
