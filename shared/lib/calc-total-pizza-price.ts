@@ -1,5 +1,5 @@
 import { ProductItem, Ingredient } from '@prisma/client';
-import { PizzaSize, PizzaType } from '../constants';
+import { PizzaSize, PizzaType } from '@/shared/constants';
 
 export const calcTotalPizzaPrice = (
     type: PizzaType,

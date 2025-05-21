@@ -6,7 +6,7 @@ import { useShallow } from 'zustand/react/shallow';
 
 import { ProductWithRelations } from '@/@types/prisma';
 import { useCartStore } from '@/shared/store';
-import { ChoosePizzaForm, ChooseProductForm } from '.';
+import { ChoosePizzaForm, ChooseProductForm } from '@/shared/components';
 
 interface IProps {
     product: ProductWithRelations;

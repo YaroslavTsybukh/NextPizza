@@ -1,8 +1,7 @@
 import { FC } from 'react';
 
 import { cn } from '@/shared/lib/utils';
-import { Button } from '../ui';
-import { PizzaImage, Title } from '.';
+import { Button, PizzaImage, Title } from '@/shared/components';
 
 interface IProps {
     imageUrl: string;

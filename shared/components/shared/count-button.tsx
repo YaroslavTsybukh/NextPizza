@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { cn } from '@/shared/lib/utils';
-import { CountIconButton } from '.';
+import { CountIconButton } from '@/shared/components';
 
 interface IProps {
     className?: string;

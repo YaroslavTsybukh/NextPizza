@@ -6,7 +6,7 @@ import { useIntersection } from 'react-use';
 import { ProductWithRelations } from '@/@types/prisma';
 import { useCategoryStore } from '@/shared/store';
 import { cn } from '@/shared/lib/utils';
-import { Title, ProductCard } from '.';
+import { Title, ProductCard } from '@/shared/components';
 
 interface IProps {
     title: string;

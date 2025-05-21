@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSet } from 'react-use';
-
 import { ProductItem } from '@prisma/client';
 
-import { Variant } from '../components/shared/group-variants';
-import { PizzaSize, PizzaType } from '../constants';
-import { getAvailablePizzaSizes } from '../lib';
+import { Variant } from '@/shared/components';
+import { PizzaSize, PizzaType } from '@/shared/constants';
+import { getAvailablePizzaSizes } from '@/shared/lib';
 
 interface IReturnValues {
     type: PizzaType;

@@ -6,8 +6,7 @@ import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 
 import { ProductWithRelations } from '@/@types/prisma';
 import { cn } from '@/shared/lib/utils';
-import { Dialog, DialogContent, DialogTitle } from '../../ui';
-import { ProductForm } from '..';
+import { Dialog, DialogContent, DialogTitle, ProductForm } from '@/shared/components';
 
 interface IProps {
     product: ProductWithRelations;

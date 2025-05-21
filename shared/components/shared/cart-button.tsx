@@ -6,8 +6,7 @@ import { useShallow } from 'zustand/react/shallow';
 
 import { cn } from '@/shared/lib/utils';
 import { useCartStore } from '@/shared/store';
-import { Button } from '../ui';
-import { CartDrawer } from '.';
+import { Button, CartDrawer } from '@/shared/components';
 
 interface IProps {
     className?: string;

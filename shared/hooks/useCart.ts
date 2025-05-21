@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useShallow } from 'zustand/react/shallow';
-import { useCartStore } from '../store';
-import { ICartStateItem } from '../lib/get-cart-details';
+
+import { useCartStore } from '@/shared/store';
+import { ICartStateItem } from '@/shared/lib';
 
 interface IReturnValues {
     totalAmount: number;

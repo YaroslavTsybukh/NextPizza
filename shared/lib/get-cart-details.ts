@@ -1,5 +1,5 @@
 import { ICartDTO } from '@/@types/dto/cart-dto';
-import { calcCartItemTotalPrice } from '.';
+import { calcCartItemTotalPrice } from '@/shared/lib';
 
 export interface ICartStateItem {
     id: number;

@@ -1,9 +1,8 @@
 import { FC } from 'react';
 
 import { PizzaSize, PizzaType } from '@/shared/constants';
-import { getCartItemDetails } from '@/shared/lib';
-import { ICartStateItem } from '@/shared/lib/get-cart-details';
-import { CheckoutItem, WhiteBlock } from '../';
+import { getCartItemDetails, ICartStateItem } from '@/shared/lib';
+import { CheckoutItem, WhiteBlock } from '@/shared/components';
 
 interface IProps {
     items: ICartStateItem[];

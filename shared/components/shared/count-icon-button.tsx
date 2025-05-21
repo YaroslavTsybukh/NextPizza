@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Minus, Plus } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';
-import { Button } from '../ui';
+import { Button } from '@/shared/components';
 
 interface IProps {
     size?: 'sm' | 'lg';

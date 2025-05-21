@@ -9,8 +9,7 @@ import { cn } from '@/shared/lib/utils';
 import { getCartItemDetails } from '@/shared/lib';
 import { PizzaSize, PizzaType } from '@/shared/constants';
 import { useCart } from '@/shared/hooks';
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Button } from '@/shared/components/ui';
-import { CartDrawerItem } from '.';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, Button, CartDrawerItem } from '@/shared/components';
 
 interface IProps {
     className?: string;

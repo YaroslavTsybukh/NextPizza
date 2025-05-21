@@ -2,8 +2,7 @@
 
 import { FC, useState, ChangeEvent } from 'react';
 
-import { Input, Skeleton } from '../ui';
-import { FilterCheckbox, FilterCheckboxProps } from '.';
+import { Input, Skeleton, FilterCheckbox, FilterCheckboxProps } from '@/shared/components';
 
 type Item = FilterCheckboxProps;
 

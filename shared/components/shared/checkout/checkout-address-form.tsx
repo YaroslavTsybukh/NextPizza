@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
-import { Input } from '../../ui';
-import { FormTextArea, WhiteBlock } from '../';
+import { Input, FormTextArea, WhiteBlock } from '@/shared/components';
 
 interface IProps {
     className?: string;

@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { Api } from '../services/api-client';
-import { getCartDetails } from '../lib';
-import { ICartStateItem } from '../lib/get-cart-details';
+
 import { ICreateCartItemValues } from '@/@types/dto/cart-dto';
+import { getCartDetails, ICartStateItem } from '@/shared/lib';
+import { Api } from '@/shared/services/api-client';
 
 export interface ICartState {
     loading: boolean;

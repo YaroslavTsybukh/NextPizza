@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Title, CheckoutSidebar, CheckoutCart, CheckoutPersonalForm, CheckoutAddressForm } from '@/shared/components/shared';
+import { Title, CheckoutSidebar, CheckoutCart, CheckoutPersonalForm, CheckoutAddressForm } from '@/shared/components';
 import { useCart } from '@/shared/hooks';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 
