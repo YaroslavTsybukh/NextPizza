@@ -30,6 +30,7 @@ export { CheckoutSidebar } from './checkout-sidebar';
 export { RequiredSymbol } from './required-symbol';
 export { ClearButton } from './clear-button';
 export { ErrorText } from './error-text';
+export { AddressInput } from './address-input';
 export * from './modals';
 export * from './checkout';
 export * from './form';
