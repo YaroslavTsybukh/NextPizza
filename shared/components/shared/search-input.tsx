@@ -13,12 +13,13 @@ import { Api } from '@/shared/services/api-client';
 interface IProps {
     className?: string;
 }
+//Todo: (Рефакторинг) сравнить этот компонент с address-input и возможно их обьединить потому , что логика почти схожая.
 
 export const SearchInput: FC<IProps> = ({ className }) => {
-    const ref = useRef<HTMLDivElement>(null);
     const [focused, setFocused] = useState<boolean>(false);
     const [products, setProducts] = useState<Product[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const ref = useRef<null | HTMLDivElement>(null);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(e.target.value);
