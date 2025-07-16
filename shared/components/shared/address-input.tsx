@@ -5,7 +5,12 @@ import { useDebounce } from 'react-use';
 
 import { Api } from '@/shared/services/api-client';
 import { Input } from '@/shared/components';
-//Todo: продолжить работу над созданием компонента. Попробовать сделать крестик удаления , если вписуешь значения в инпут.
+
+/**
+ * TODO: продолжить работу над созданием компонента.
+ * TODO: сделать крестик удаления , если вписуешь значения в инпут.
+ * TODO: Сделать типизацию для addresses
+ */
 
 export const AddressInput = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
