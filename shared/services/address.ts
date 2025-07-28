@@ -1,7 +1,8 @@
+import { ILocationIQAddress } from '@/@types';
 import { locationIQInstance } from './instances';
 
 export const getAddress = async (query: string) => {
-    const { data } = await locationIQInstance.get('/autocomplete', {
+    const { data } = await locationIQInstance.get<ILocationIQAddress[]>('/autocomplete', {
         params: {
             key: process.env.NEXT_PUBLIC_ACCESS_TOKEN_LOCATION_IQ,
             q: query,

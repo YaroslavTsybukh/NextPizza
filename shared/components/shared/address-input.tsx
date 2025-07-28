@@ -3,22 +3,21 @@
 import { useRef, useState, ChangeEvent, useEffect } from 'react';
 import { useDebounce } from 'react-use';
 
+import { ILocationIQAddress } from '@/@types';
 import { Api } from '@/shared/services/api-client';
 import { Input } from '@/shared/components';
 
 /**
  * TODO: продолжить работу над созданием компонента.
  * TODO: сделать крестик удаления , если вписуешь значения в инпут.
- * TODO: Сделать типизацию для addresses
  */
 
 export const AddressInput = () => {
-    const [searchQuery, setSearchQuery] = useState<string>('');
     const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
-    const [addresses, setAddresses] = useState([]);
+    const [addresses, setAddresses] = useState<ILocationIQAddress[]>([]);
+    const [searchQuery, setSearchQuery] = useState<string>('');
 
     const autoCompleteRef = useRef<null | HTMLDivElement>(null);
-
     //Todo: сделать оптимизацию и вынести эффект в отдельный хук.
 
     useEffect(() => {
@@ -32,7 +31,7 @@ export const AddressInput = () => {
         document.addEventListener('click', handleClick);
 
         return () => document.removeEventListener('click', handleClick);
-    });
+    }, []);
 
     useDebounce(
         () => {
@@ -40,7 +39,10 @@ export const AddressInput = () => {
                 Api.address
                     .getAddress(searchQuery)
                     .then((data) => setAddresses(data))
-                    .catch((error) => setAddresses([]));
+                    .catch((error) => {
+                        console.log(error);
+                        setAddresses([]);
+                    });
             }
         },
         500,
