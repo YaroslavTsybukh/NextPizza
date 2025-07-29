@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Trash2Icon } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';
-import { ICartItemProps } from '@/@types/cart-item-details';
+import { ICartItemProps } from '@/@types';
 import * as CartItem from './cart-item-details';
 
 interface IProps extends ICartItemProps {
