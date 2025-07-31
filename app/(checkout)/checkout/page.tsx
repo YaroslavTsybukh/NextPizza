@@ -21,6 +21,7 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
             address: '',
             comment: '',
         },
+        mode: 'onChange',
     });
 
     const onSubmit = (data) => console.log(data);

@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import { X } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';
 
 interface IProps {
-    onClick: VoidFunction;
+    onClick: (e: MouseEvent<HTMLButtonElement>) => void;
     className?: string;
 }
 

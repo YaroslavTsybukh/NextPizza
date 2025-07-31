@@ -5,11 +5,10 @@ import { useDebounce } from 'react-use';
 
 import { ILocationIQAddress } from '@/@types';
 import { Api } from '@/shared/services/api-client';
-import { Input } from '@/shared/components';
+import { FormInput } from '@/shared/components';
 
 /**
  * TODO: продолжить работу над созданием компонента.
- * TODO: сделать крестик удаления , если вписуешь значения в инпут.
  */
 
 export const AddressInput = () => {
@@ -40,8 +39,8 @@ export const AddressInput = () => {
                     .getAddress(searchQuery)
                     .then((data) => setAddresses(data))
                     .catch((error) => {
-                        console.log(error);
                         setAddresses([]);
+                        console.log(error);
                     });
             }
         },
@@ -56,6 +55,12 @@ export const AddressInput = () => {
         if (!e.target.value.trim()) setAddresses([]);
     };
 
+    const handleClear = () => {
+        setSearchQuery('');
+        setShowSuggestions(false);
+        setAddresses([]);
+    };
+
     const handleSuggestionClick = (address: string) => {
         setSearchQuery(address);
         setShowSuggestions(false);
@@ -65,7 +70,15 @@ export const AddressInput = () => {
     return (
         <div ref={autoCompleteRef}>
             <div>
-                <Input value={searchQuery} type="text" placeholder="Укажите улицу и номер дома" onChange={handleChange} className="text-base" />
+                <FormInput
+                    value={searchQuery}
+                    type="text"
+                    name="address"
+                    className="text-base"
+                    placeholder="Укажите улицу и номер дома"
+                    onChange={handleChange}
+                    onClear={handleClear}
+                />
             </div>
             {showSuggestions && (
                 <ul className="mt-2 rounded-xl bg-slate-200">

@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from 'react';
+import { FC, InputHTMLAttributes, ChangeEvent, MouseEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { ClearButton, ErrorText, RequiredSymbol, Input } from '@/shared/components';
@@ -6,11 +6,16 @@ import { ClearButton, ErrorText, RequiredSymbol, Input } from '@/shared/componen
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
     label?: string;
-    required?: boolean;
     className?: string;
+    value?: string;
+    type: string;
+    placeholder: string;
+    required?: boolean;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onClear?: () => void;
 }
 
-export const FormInput: FC<IProps> = ({ name, label, required, className, ...props }) => {
+export const FormInput: FC<IProps> = ({ name, label, className, onChange, onClear, ...props }) => {
     const {
         register,
         watch,
@@ -19,22 +24,33 @@ export const FormInput: FC<IProps> = ({ name, label, required, className, ...pro
     } = useFormContext();
 
     const value = watch(name);
+
     const errorText = errors[name]?.message as string;
 
-    const onClickClear = () => {
+    const { onChange: rhfOnChange, ...restRegister } = register(name);
+
+    const onClickClear = (e: MouseEvent<HTMLButtonElement>) => {
         setValue(name, '', { shouldValidate: true });
+
+        onClear?.();
+    };
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e);
+
+        rhfOnChange(e);
     };
 
     return (
         <div className={className}>
             {label && (
                 <p className="mb-2 font-medium">
-                    {label} {required && <RequiredSymbol />}
+                    {label} {props.required && <RequiredSymbol />}
                 </p>
             )}
 
             <div className="relative">
-                <Input className="text-md h-12" {...props} {...register(name)} />
+                <Input value={value} className="text-md h-12" onChange={handleChange} {...props} {...restRegister} />
 
                 {value && <ClearButton onClick={onClickClear} />}
             </div>
