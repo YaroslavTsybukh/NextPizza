@@ -2,22 +2,21 @@
 
 import { useRef, useState, ChangeEvent, useEffect } from 'react';
 import { useDebounce } from 'react-use';
+import { ScaleLoader } from 'react-spinners';
 
 import { ILocationIQAddress } from '@/@types';
 import { Api } from '@/shared/services/api-client';
 import { FormInput } from '@/shared/components';
 
-/**
- * TODO: продолжить работу над созданием компонента.
- */
+// TODO: сделать оптимизацию и вынести эффект в отдельный хук.
 
 export const AddressInput = () => {
     const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
     const [addresses, setAddresses] = useState<ILocationIQAddress[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
     const autoCompleteRef = useRef<null | HTMLDivElement>(null);
-    //Todo: сделать оптимизацию и вынести эффект в отдельный хук.
 
     useEffect(() => {
         const handleClick = (e: MouseEvent) => {
@@ -41,7 +40,8 @@ export const AddressInput = () => {
                     .catch((error) => {
                         setAddresses([]);
                         console.log(error);
-                    });
+                    })
+                    .finally(() => setLoading(false));
             }
         },
         500,
@@ -49,12 +49,15 @@ export const AddressInput = () => {
     );
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setLoading(true);
         setSearchQuery(e.target.value);
         setShowSuggestions(!!e.target.value.trim());
 
-        if (!e.target.value.trim()) setAddresses([]);
+        if (!e.target.value.trim()) {
+            setLoading(false);
+            setAddresses([]);
+        }
     };
-
     const handleClear = () => {
         setSearchQuery('');
         setShowSuggestions(false);
@@ -81,11 +84,13 @@ export const AddressInput = () => {
                 />
             </div>
             {showSuggestions && (
-                <ul className="mt-2 rounded-xl bg-slate-200">
-                    {addresses.length > 0 ? (
+                <ul className="mt-2 rounded-xl bg-slate-200 p-2.5">
+                    {loading && addresses.length === 0 ? (
+                        <ScaleLoader className="text-center" color="#ff5e00" loading={true} />
+                    ) : addresses.length > 0 ? (
                         addresses.map((address) => (
                             <li
-                                className="rounded-xl p-2.5 hover:cursor-pointer hover:bg-slate-300"
+                                className="rounded-xl hover:cursor-pointer hover:bg-slate-300"
                                 key={address.place_id}
                                 onClick={() => handleSuggestionClick(address.display_name)}
                             >
@@ -93,7 +98,7 @@ export const AddressInput = () => {
                             </li>
                         ))
                     ) : (
-                        <li className="h-12 text-center leading-[48px]">Такого адресса не существует</li>
+                        <li className="h-12 text-center leading-[48px]">Такого адреса не существует</li>
                     )}
                 </ul>
             )}

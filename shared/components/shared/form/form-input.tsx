@@ -12,7 +12,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder: string;
     required?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-    onClear?: () => void;
+    onClear?: VoidFunction;
 }
 
 export const FormInput: FC<IProps> = ({ name, label, className, onChange, onClear, ...props }) => {
