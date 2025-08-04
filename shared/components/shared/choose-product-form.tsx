@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { cn } from '@/shared/lib/utils';
-import { Button, PizzaImage, Title } from '@/shared/components';
+import { Button, ProductImage, Title } from '@/shared/components';
 
 interface IProps {
     imageUrl: string;
@@ -16,10 +16,7 @@ export const ChooseProductForm: FC<IProps> = ({ name, imageUrl, price, onSubmit,
     return (
         <div className={cn(className, 'flex flex-1')}>
             <div className="relative flex w-full flex-1 items-center justify-center">
-                <img src={imageUrl} alt={name} className="relative left-2 top-2 z-10 h-[350px] w-[350px] transition-all duration-300" />
-
-                {/* //TODO посмотреть почему сделан коммент */}
-                {/* <PizzaImage src={imageUrl} size={size} /> */}
+                <ProductImage src={imageUrl} size={20} alt="product image" />
             </div>
 
             <div className="w-[490px] rounded-lg bg-[#f7f6f5] p-7">

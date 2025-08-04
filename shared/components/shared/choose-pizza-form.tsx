@@ -7,7 +7,7 @@ import { cn } from '@/shared/lib/utils';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/shared/constants';
 import { getPizzaDetails } from '@/shared/lib';
 import { usePizzaOptions } from '@/shared/hooks';
-import { Button, GroupVariants, Title, PizzaImage, IngredientItem } from '@/shared/components';
+import { Button, GroupVariants, Title, ProductImage, IngredientItem } from '@/shared/components';
 
 interface IProps {
     className?: string;
@@ -32,7 +32,7 @@ export const ChoosePizzaForm: FC<IProps> = ({ className, imageUrl, name, ingredi
 
     return (
         <div className={cn(className, 'flex flex-1')}>
-            <PizzaImage src={imageUrl} size={size} />
+            <ProductImage src={imageUrl} size={size} showDecoration={true} alt="pizza image" />
 
             <div className="w-[490px] rounded-lg bg-[#f7f6f5] p-7">
                 <Title text={name} size="lg" className="mb-1 font-extrabold" />

@@ -11,7 +11,7 @@ export { CheckboxFiltersGroup } from './checkbox-filters-group';
 export { ProductsGroupList } from './products-group-list';
 export { ProductCard } from './product-card';
 export { SearchInput } from './search-input';
-export { PizzaImage } from './pizza-image';
+export { ProductImage } from './product-image';
 export { GroupVariants } from './group-variants';
 export { ChooseProductForm } from './choose-product-form';
 export { ChoosePizzaForm } from './choose-pizza-form';
