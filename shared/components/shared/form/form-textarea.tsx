@@ -1,7 +1,7 @@
 import { FC, TextareaHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Textarea, ClearButton } from '@/shared/components';
+import { Textarea, ClearButton, RequiredSymbol } from '@/shared/components';
 
 interface IProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     name: string;
@@ -21,9 +21,11 @@ export const FormTextArea: FC<IProps> = ({ name, label, required, className, ...
 
     return (
         <div className={className}>
-            <p className="mb-2 font-medium">
-                {label} {required && <span className="text-red-500">*</span>}
-            </p>
+            {label && (
+                <p className="mb-2 font-medium">
+                    {label} {required && <RequiredSymbol />}
+                </p>
+            )}
 
             <div className="relative">
                 <Textarea className="text-md h-12" {...props} {...register(name)} />
