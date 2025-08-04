@@ -13,7 +13,6 @@ import { Api } from '@/shared/services/api-client';
 interface IProps {
     className?: string;
 }
-//Todo: (Рефакторинг) сравнить этот компонент с address-input и возможно их обьединить потому , что логика почти схожая.
 
 export const SearchInput: FC<IProps> = ({ className }) => {
     const [focused, setFocused] = useState<boolean>(false);

@@ -1,14 +1,13 @@
 'use client';
 
-import { useRef, useState, ChangeEvent, useEffect } from 'react';
+import { useRef, useState, ChangeEvent } from 'react';
 import { useDebounce } from 'react-use';
 import { ScaleLoader } from 'react-spinners';
 
 import { ILocationIQAddress } from '@/@types';
 import { Api } from '@/shared/services/api-client';
 import { FormInput } from '@/shared/components';
-
-// TODO: сделать оптимизацию и вынести эффект в отдельный хук.
+import { useClickOutside } from '@/shared/hooks';
 
 export const AddressInput = () => {
     const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
@@ -18,18 +17,10 @@ export const AddressInput = () => {
 
     const autoCompleteRef = useRef<null | HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleClick = (e: MouseEvent) => {
-            if (autoCompleteRef.current && e.target instanceof Node && !autoCompleteRef.current.contains(e.target)) {
-                setShowSuggestions(false);
-                setAddresses([]);
-            }
-        };
-
-        document.addEventListener('click', handleClick);
-
-        return () => document.removeEventListener('click', handleClick);
-    }, []);
+    useClickOutside(autoCompleteRef, () => {
+        setShowSuggestions(false);
+        setAddresses([]);
+    });
 
     useDebounce(
         () => {
@@ -72,17 +63,16 @@ export const AddressInput = () => {
 
     return (
         <div ref={autoCompleteRef}>
-            <div>
-                <FormInput
-                    value={searchQuery}
-                    type="text"
-                    name="address"
-                    className="text-base"
-                    placeholder="Укажите улицу и номер дома"
-                    onChange={handleChange}
-                    onClear={handleClear}
-                />
-            </div>
+            <FormInput
+                value={searchQuery}
+                type="text"
+                name="address"
+                className="text-base"
+                placeholder="Укажите улицу и номер дома"
+                onChange={handleChange}
+                onClear={handleClear}
+            />
+
             {showSuggestions && (
                 <ul className="mt-2 rounded-xl bg-slate-200 p-2.5">
                     {loading && addresses.length === 0 ? (
