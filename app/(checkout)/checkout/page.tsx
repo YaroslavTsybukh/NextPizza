@@ -37,9 +37,9 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
                         <div className="mb-20 flex flex-1 flex-col gap-10">
                             <CheckoutCart items={items} onClickCountButton={onClickCountButton} removeCartItem={removeCartItem} />
 
-                            <CheckoutPersonalForm />
+                            <CheckoutPersonalForm className={loading ? 'pointer-events-none opacity-40' : ''} />
 
-                            <CheckoutAddressForm />
+                            <CheckoutAddressForm className={loading ? 'pointer-events-none opacity-40' : ''} />
                         </div>
 
                         {/* Правая часть */}
