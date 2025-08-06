@@ -7,13 +7,14 @@ import { ICartStateItem } from '@/shared/lib';
 interface IReturnValues {
     totalAmount: number;
     items: ICartStateItem[];
+    loading: boolean;
     removeCartItem: (id: number) => Promise<void>;
     onClickCountButton: (id: number, quantity: number, type: 'plus' | 'minus') => void;
 }
 
 export const useCart = (): IReturnValues => {
-    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem] = useCartStore(
-        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem]),
+    const [totalAmount, items, updateItemQuantity, getCartItems, removeCartItem, loading] = useCartStore(
+        useShallow((state) => [state.totalAmount, state.items, state.updateItemQuantity, state.getCartItems, state.removeCartItem, state.loading]),
     );
 
     const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
@@ -30,5 +31,6 @@ export const useCart = (): IReturnValues => {
         items,
         removeCartItem,
         onClickCountButton,
+        loading,
     };
 };

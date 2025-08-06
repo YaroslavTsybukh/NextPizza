@@ -27,7 +27,7 @@ export const useCartStore = create<ICartState>()((set) => ({
     items: [],
     error: false,
     totalAmount: 0,
-    loading: false,
+    loading: true,
 
     getCartItems: async () => {
         try {

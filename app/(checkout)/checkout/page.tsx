@@ -9,7 +9,7 @@ import { useCart } from '@/shared/hooks';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
-    const { totalAmount, items, removeCartItem, onClickCountButton } = useCart();
+    const { totalAmount, items, removeCartItem, onClickCountButton, loading } = useCart();
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(checkoutFormSchema),
@@ -44,7 +44,7 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
 
                         {/* Правая часть */}
                         <div className="w-[450px]">
-                            <CheckoutSidebar totalAmount={totalAmount} />
+                            <CheckoutSidebar totalAmount={totalAmount} loading={loading} />
                         </div>
                     </div>
                 </form>
