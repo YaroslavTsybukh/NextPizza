@@ -9,7 +9,7 @@ import { useCart } from '@/shared/hooks';
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 
 export default function CheckoutPage({ children }: { children: ReactNode }) {
-    const { totalAmount, items, removeCartItem, onClickCountButton, loading } = useCart();
+    const { totalAmount, items, loading, removeCartItem, onClickCountButton } = useCart();
 
     const form = useForm<CheckoutFormValues>({
         resolver: zodResolver(checkoutFormSchema),
@@ -35,7 +35,7 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
                     <div className="flex gap-10">
                         {/* Левая часть */}
                         <div className="mb-20 flex flex-1 flex-col gap-10">
-                            <CheckoutCart items={items} onClickCountButton={onClickCountButton} removeCartItem={removeCartItem} />
+                            <CheckoutCart items={items} loading={loading} onClickCountButton={onClickCountButton} removeCartItem={removeCartItem} />
 
                             <CheckoutPersonalForm className={loading ? 'pointer-events-none opacity-40' : ''} />
 
