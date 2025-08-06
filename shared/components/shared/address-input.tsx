@@ -3,6 +3,7 @@
 import { useRef, useState, ChangeEvent } from 'react';
 import { useDebounce } from 'react-use';
 import { ScaleLoader } from 'react-spinners';
+import { useFormContext } from 'react-hook-form';
 
 import { ILocationIQAddress } from '@/@types';
 import { Api } from '@/shared/services/api-client';
@@ -14,6 +15,7 @@ export const AddressInput = () => {
     const [addresses, setAddresses] = useState<ILocationIQAddress[]>([]);
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const { setValue } = useFormContext();
 
     const autoCompleteRef = useRef<null | HTMLDivElement>(null);
 
@@ -41,6 +43,7 @@ export const AddressInput = () => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setLoading(true);
+        setValue('address', e.target.value);
         setSearchQuery(e.target.value);
         setShowSuggestions(!!e.target.value.trim());
 
@@ -57,6 +60,7 @@ export const AddressInput = () => {
 
     const handleSuggestionClick = (address: string) => {
         setSearchQuery(address);
+        setValue('address', address);
         setShowSuggestions(false);
         setAddresses([]);
     };
