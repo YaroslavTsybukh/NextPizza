@@ -54,7 +54,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                 value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${DELIVERY_PRICE} грн`}
             />
 
-            <Button type="submit" className="mt-6 h-14 w-full rounded-2xl text-base font-bold">
+            <Button loading={loading} type="submit" className="mt-6 h-14 w-full rounded-2xl text-base font-bold">
                 Перейти к оплате
                 <ArrowRight className="ml-2 w-5" />
             </Button>
