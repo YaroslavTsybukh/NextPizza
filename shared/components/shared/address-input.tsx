@@ -52,6 +52,7 @@ export const AddressInput = () => {
             setAddresses([]);
         }
     };
+
     const handleClear = () => {
         setSearchQuery('');
         setShowSuggestions(false);

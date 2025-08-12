@@ -1,10 +1,9 @@
 import { ILocationIQAddress } from '@/@types';
-import { locationIQInstance } from './instances';
+import { baseInstance } from './instances';
 
 export const getAddress = async (query: string): Promise<ILocationIQAddress[]> => {
-    const { data } = await locationIQInstance.get<ILocationIQAddress[]>('/autocomplete', {
+    const { data } = await baseInstance.get<ILocationIQAddress[]>('/locationiq', {
         params: {
-            key: process.env.NEXT_PUBLIC_ACCESS_TOKEN_LOCATION_IQ,
             q: query,
             countrycodes: 'ua',
             'accept-language': 'ru',
@@ -13,6 +12,5 @@ export const getAddress = async (query: string): Promise<ILocationIQAddress[]> =
             dedupe: 1,
         },
     });
-
     return data;
 };
