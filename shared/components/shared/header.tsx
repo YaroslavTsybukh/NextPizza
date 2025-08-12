@@ -21,7 +21,7 @@ export const Header: FC<IProps> = ({ hasSearch = true, hasCart = true, className
                         <Image src="/logo.png" width={35} height={35} alt="Logo" />
                         <div>
                             <p className="text-2xl font-black uppercase">NEXT PIZZA</p>
-                            <p className="text-base text-gray-400">вкусней уже некуда</p>
+                            <p className="text-base text-gray-400">Вершина наслаждения</p>
                         </div>
                     </div>
                 </Link>
