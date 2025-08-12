@@ -1,9 +1,11 @@
 'use server';
-
-import { prisma } from '@/prisma/prisma-client';
-import { CheckoutFormValues } from '@/shared/constants';
-import { OrderStatus } from '@prisma/client';
 import { cookies } from 'next/headers';
+import { prisma } from '@/prisma/prisma-client';
+
+import { OrderStatus } from '@prisma/client';
+import { CheckoutFormValues } from '@/shared/constants';
+import { sendEmail } from '@/shared/lib';
+import { PayOrderTemplate } from '@/shared/components';
 
 export async function createOrder(data: CheckoutFormValues) {
     try {
@@ -45,7 +47,7 @@ export async function createOrder(data: CheckoutFormValues) {
         }
 
         /* Create an order */
-        const order = prisma.order.create({
+        const order = await prisma.order.create({
             data: {
                 token: cartToken,
                 fullName: data.firstName + ' ' + data.lastName,
@@ -76,6 +78,17 @@ export async function createOrder(data: CheckoutFormValues) {
         });
 
         //TODO: Сделать создание ссылки оплаты
-        return 'https://nextjs.org/docs/14/app/building-your-application/data-fetching/server-actions-and-mutations';
-    } catch (err) {}
+
+        await sendEmail(
+            data.email,
+            'Next Pizza / Оплатите заказ #' + order.id,
+            PayOrderTemplate({
+                orderId: order.id,
+                totalAmount: order.totalAmount,
+                paymentUrl: 'https://resend.com/docs/send-with-nextjs',
+            }),
+        );
+    } catch (err) {
+        console.log('[CreateOrder] Server error', err);
+    }
 }

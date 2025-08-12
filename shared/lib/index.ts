@@ -5,6 +5,7 @@ export { getCartItemDetails } from './get-cart-item-details';
 export { getCartDetails } from './get-cart-details';
 export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
 export { findPizzas } from './find-pizzas';
+export { sendEmail } from './send-email';
 
 export type { IGetSearchParams } from './find-pizzas';
 export type { ICartStateItem } from './get-cart-details';
