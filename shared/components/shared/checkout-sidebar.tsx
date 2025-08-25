@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { ArrowRight, Package, Percent, Truck } from 'lucide-react';
 
 import { cn } from '@/shared/lib/utils';
+import { calculateTotalWithFees } from '@/shared/lib';
 import { Button, CheckoutItemDetails, WhiteBlock, Skeleton } from '@/shared/components';
 
 interface IProps {
@@ -10,18 +11,14 @@ interface IProps {
     className?: string;
 }
 
-const VAT = 15;
-const DELIVERY_PRICE = 100;
-
 export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className }) => {
-    const vatPrice = (totalAmount * VAT) / 100;
-    const totalPrice = totalAmount + vatPrice + DELIVERY_PRICE;
+    const { totalPriceWithFees, vatPrice, deliveryPrice } = calculateTotalWithFees(totalAmount);
 
     return (
         <WhiteBlock className={cn('sticky top-4 p-6', className)}>
             <div className="flex flex-col gap-1">
                 <span className="text-xl">Итого</span>
-                {loading ? <Skeleton className="h-11 w-48" /> : <span className="h-11 text-[34px] font-extrabold">{totalPrice} грн</span>}
+                {loading ? <Skeleton className="h-11 w-48" /> : <span className="h-11 text-[34px] font-extrabold">{totalPriceWithFees} грн</span>}
             </div>
 
             <CheckoutItemDetails
@@ -51,7 +48,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                         <p>Доставка:</p>
                     </div>
                 }
-                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${DELIVERY_PRICE} грн`}
+                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${deliveryPrice} грн`}
             />
 
             <Button loading={loading} type="submit" className="mt-6 h-14 w-full rounded-2xl text-base font-bold">

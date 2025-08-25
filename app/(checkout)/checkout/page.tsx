@@ -37,9 +37,9 @@ export default function CheckoutPage({ children }: { children: ReactNode }) {
                 icon: '✅',
             });
 
-            // if (url) {
-            //     window.location.href = url;
-            // }
+            if (url) {
+                window.location.href = url;
+            }
         } catch (err) {
             console.log(err);
             setSubmitting(false);
