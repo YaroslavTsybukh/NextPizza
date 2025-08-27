@@ -82,15 +82,19 @@ export async function createOrder(data: CheckoutFormValues) {
         const origin = headers().get('origin') || (process.env.NEXT_PUBLIC_APP_URL as string);
         const url = await createPayment(userCart.items, order.id, origin);
 
-        // await sendEmail(
-        //     data.email,
-        //     'Next Pizza / Оплатите заказ #' + order.id,
-        //     PayOrderTemplate({
-        //         orderId: order.id,
-        //         totalAmount: order.totalAmount,
-        //         paymentUrl: 'https://resend.com/docs/send-with-nextjs',
-        //     }),
-        // );
+        if (!url) {
+            throw new Error('Payment url not found');
+        }
+
+        await sendEmail(
+            data.email,
+            'Next Pizza / Оплатите заказ #' + order.id,
+            PayOrderTemplate({
+                orderId: order.id,
+                totalAmount: order.totalAmount,
+                paymentUrl: 'https://resend.com/docs/send-with-nextjs',
+            }),
+        );
 
         return url;
     } catch (err) {

@@ -3,5 +3,3 @@ export type { ILocationIQAddress } from './locationIQ';
 export type { ProductWithRelations } from './prisma';
 export type { IUserCart } from './userCart';
 export * from './dto/cart-dto';
-
-//TODO: переименовать все файлы типов с .d.ts на .ts.
