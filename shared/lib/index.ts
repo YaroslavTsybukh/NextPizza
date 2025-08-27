@@ -7,6 +7,7 @@ export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
 export { findPizzas } from './find-pizzas';
 export { sendEmail } from './send-email';
 export { calculateTotalWithFees } from './calculateTotalWithFees';
+export { createPayment } from './create-payment';
 
 export type { IGetSearchParams } from './find-pizzas';
 export type { ICartStateItem } from './get-cart-details';
