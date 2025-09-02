@@ -30,6 +30,7 @@ export { RequiredSymbol } from './required-symbol';
 export { ClearButton } from './clear-button';
 export { ErrorText } from './error-text';
 export { AddressInput } from './address-input';
+export { QueryToaster } from './query-toaster';
 export * from './email-templates';
 export * from './modals';
 export * from './checkout';

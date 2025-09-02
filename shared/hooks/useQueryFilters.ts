@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import qs from 'qs';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { IFilters } from '@/shared/hooks';
 
 export const useQueryFilters = (filter: IFilters) => {
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
+        if (searchParams.get('canceled') === 'true') return;
+
         const obj = {
             ...filter.prices,
             typePizza: Array.from(filter.selectedTypePizza),
@@ -22,5 +25,5 @@ export const useQueryFilters = (filter: IFilters) => {
         router.push(`?${urlParams}`, {
             scroll: false,
         });
-    }, [filter]);
+    }, [filter, router, searchParams]);
 };
