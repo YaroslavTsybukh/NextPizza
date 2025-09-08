@@ -78,6 +78,7 @@ export async function createOrder(data: CheckoutFormValues) {
             },
         });
 
+        //TODO: при деплои заменить url process.env.NEXT_PUBLIC_APP_URL с локалки на продовский.
         /* Create Stripe session */
         const origin = headers().get('origin') || (process.env.NEXT_PUBLIC_APP_URL as string);
         const url = await createPayment(userCart.items, order.id, origin);
@@ -92,7 +93,7 @@ export async function createOrder(data: CheckoutFormValues) {
             PayOrderTemplate({
                 orderId: order.id,
                 totalAmount: order.totalAmount,
-                paymentUrl: 'https://resend.com/docs/send-with-nextjs',
+                paymentUrl: url,
             }),
         );
 
