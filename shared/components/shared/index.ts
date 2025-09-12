@@ -32,6 +32,7 @@ export { ErrorText } from './error-text';
 export { AddressInput } from './address-input';
 export { QueryToaster } from './query-toaster';
 export { Providers } from './providers';
+export { ProfileButton } from './profile-button';
 export * from './email-templates';
 export * from './modals';
 export * from './checkout';

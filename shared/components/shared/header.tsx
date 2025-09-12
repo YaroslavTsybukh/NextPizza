@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/shared/lib/utils';
-import { Button, Container, SearchInput, CartButton } from '@/shared/components';
+import { Container, SearchInput, CartButton, ProfileButton } from '@/shared/components';
 
 interface IProps {
     hasSearch?: boolean;
@@ -33,10 +33,7 @@ export const Header: FC<IProps> = ({ hasSearch = true, hasCart = true, className
                 )}
 
                 <div className="flex items-center gap-3">
-                    <Button variant="outline" className="gap-1">
-                        <User size={16} />
-                        Войти
-                    </Button>
+                    <ProfileButton />
 
                     {hasCart && <CartButton />}
                 </div>
