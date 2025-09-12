@@ -1,10 +1,11 @@
-import { FC } from 'react';
-import { User } from 'lucide-react';
+'use client';
+
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { cn } from '@/shared/lib/utils';
-import { Container, SearchInput, CartButton, ProfileButton } from '@/shared/components';
+import { Container, SearchInput, CartButton, ProfileButton, AuthModal } from '@/shared/components';
 
 interface IProps {
     hasSearch?: boolean;
@@ -13,6 +14,8 @@ interface IProps {
 }
 
 export const Header: FC<IProps> = ({ hasSearch = true, hasCart = true, className }) => {
+    const [openAuthModal, setOpenAuthModal] = useState<boolean>(false);
+
     return (
         <header className={cn('border-b', className)}>
             <Container className="flex items-center justify-between py-8">
@@ -33,7 +36,9 @@ export const Header: FC<IProps> = ({ hasSearch = true, hasCart = true, className
                 )}
 
                 <div className="flex items-center gap-3">
-                    <ProfileButton />
+                    <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+
+                    <ProfileButton onClick={() => setOpenAuthModal(true)} />
 
                     {hasCart && <CartButton />}
                 </div>
