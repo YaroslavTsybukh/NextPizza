@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 
-import { Dialog, DialogContent, Button, DialogTitle, LoginForm } from '@/shared/components';
+import { Dialog, DialogContent, Button, DialogTitle, LoginForm, RegisterForm } from '@/shared/components';
 
 interface IProps {
     open: boolean;
@@ -22,10 +22,10 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="w-[450px] bg-white p-10">
                 <VisuallyHidden.Root>
-                    <DialogTitle>Register / Login form (заглушка)</DialogTitle>
+                    <DialogTitle></DialogTitle>
                 </VisuallyHidden.Root>
 
-                {formType === 'signIn' ? <LoginForm /> : <div>Sign up form</div>}
+                {formType === 'signIn' ? <LoginForm /> : <RegisterForm />}
 
                 <hr />
                 <div className="flex gap-2">

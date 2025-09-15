@@ -1,2 +1,2 @@
 export { AuthModal } from './auth-modal';
-export { LoginForm } from './forms';
+export { LoginForm, RegisterForm } from './forms';
