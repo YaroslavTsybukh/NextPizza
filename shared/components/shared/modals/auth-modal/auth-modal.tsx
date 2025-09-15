@@ -2,6 +2,7 @@
 
 import { FC, useState } from 'react';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 
 import { Dialog, DialogContent, Button, DialogTitle, LoginForm, RegisterForm } from '@/shared/components';
@@ -29,7 +30,17 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
 
                 <hr />
                 <div className="flex gap-2">
-                    <Button variant="secondary" type="button" className="h-12 flex-1 gap-2 p-2">
+                    <Button
+                        onClick={() =>
+                            signIn('github', {
+                                callbackUrl: '/',
+                                redirect: true,
+                            })
+                        }
+                        variant="secondary"
+                        type="button"
+                        className="h-12 flex-1 gap-2 p-2"
+                    >
                         <Image width={24} height={24} src="https://github.githubassets.com/favicons/favicon.svg" alt="Github Logo" />
                         Github
                     </Button>

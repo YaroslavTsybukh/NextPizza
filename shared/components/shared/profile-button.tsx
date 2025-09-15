@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { CircleUser, User } from 'lucide-react';
 
 import { Button } from '@/shared/components';
@@ -21,10 +22,12 @@ export const ProfileButton: FC<IProps> = ({ className, onClick }) => {
                     Войти
                 </Button>
             ) : (
-                <Button variant="secondary" className="flex items-center gap-2">
-                    <CircleUser size={18} />
-                    Профиль
-                </Button>
+                <Link href="/profile">
+                    <Button variant="secondary" className="flex items-center gap-2">
+                        <CircleUser size={18} />
+                        Профиль
+                    </Button>
+                </Link>
             )}
         </div>
     );
