@@ -1,3 +1,4 @@
 export * from './checkout-form-schema';
 export * from './pizza';
+export * from './auth-schema';
 export { authOptions } from './auth-options';

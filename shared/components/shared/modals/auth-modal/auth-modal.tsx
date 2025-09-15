@@ -1,7 +1,10 @@
-import { FC } from 'react';
-import Image from 'next/image';
+'use client';
 
-import { Dialog, DialogContent, Button, DialogTitle, DialogHeader } from '@/shared/components';
+import { FC, useState } from 'react';
+import Image from 'next/image';
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+
+import { Dialog, DialogContent, Button, DialogTitle, LoginForm } from '@/shared/components';
 
 interface IProps {
     open: boolean;
@@ -9,12 +12,20 @@ interface IProps {
 }
 
 export const AuthModal: FC<IProps> = ({ open, onClose }) => {
+    const [formType, setFormType] = useState<'signIn' | 'signUp'>('signIn');
+
+    const onSwitchType = () => {
+        setFormType((prev) => (prev === 'signIn' ? 'signUp' : 'signIn'));
+    };
+
     return (
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="w-[450px] bg-white p-10">
-                <DialogHeader>
+                <VisuallyHidden.Root>
                     <DialogTitle>Register / Login form (заглушка)</DialogTitle>
-                </DialogHeader>
+                </VisuallyHidden.Root>
+
+                {formType === 'signIn' ? <LoginForm /> : <div>Sign up form</div>}
 
                 <hr />
                 <div className="flex gap-2">
@@ -26,8 +37,8 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
                         <Image width={24} height={24} src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Logo" />
                     </Button>
                 </div>
-                <Button variant="outline" type="button" className="h-12">
-                    Sign in / Sign up (заглушка)
+                <Button onClick={onSwitchType} variant="outline" type="button" className="h-12">
+                    {formType !== 'signIn' ? 'Войти' : 'Зарегистрироваться'}
                 </Button>
             </DialogContent>
         </Dialog>

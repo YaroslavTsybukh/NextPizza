@@ -4,8 +4,9 @@ import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { cn } from '@/shared/lib/utils';
 import { Container, SearchInput, CartButton, ProfileButton, AuthModal } from '@/shared/components';
+
+import { cn } from '@/shared/lib/utils';
 
 interface IProps {
     hasSearch?: boolean;
