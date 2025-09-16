@@ -26,7 +26,7 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
                     <DialogTitle></DialogTitle>
                 </VisuallyHidden.Root>
 
-                {formType === 'signIn' ? <LoginForm /> : <RegisterForm />}
+                {formType === 'signIn' ? <LoginForm onClose={onClose} /> : <RegisterForm />}
 
                 <hr />
                 <div className="flex gap-2">
