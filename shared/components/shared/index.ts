@@ -33,6 +33,7 @@ export { AddressInput } from './address-input';
 export { QueryToaster } from './query-toaster';
 export { Providers } from './providers';
 export { ProfileButton } from './profile-button';
+export { ProfileForm } from './profile-form';
 export * from './email-templates';
 export * from './modals';
 export * from './checkout';
