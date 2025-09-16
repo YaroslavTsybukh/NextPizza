@@ -3,7 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export default function SuccessPage() {
     return (
-        <div className="flex h-full items-center justify-center bg-gray-50 px-4">
+        <div className="flex h-[calc(100vh-121px)] items-center justify-center bg-gray-50 px-4">
             <div className="w-full max-w-lg rounded-2xl bg-white p-8 text-center shadow-lg">
                 <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-green-500" />
                 <h1 className="text-2xl font-bold text-gray-900">Оплата прошла успешно 🎉</h1>

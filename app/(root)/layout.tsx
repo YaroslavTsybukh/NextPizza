@@ -16,7 +16,7 @@ export default function HomeLayout({
     return (
         <>
             <Header />
-            <main className="h-[calc(100vh-121px)]">
+            <main>
                 {children}
                 {modal}
             </main>
