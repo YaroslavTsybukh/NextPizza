@@ -1,4 +1,5 @@
 import { prisma } from '@/prisma/prisma-client';
+import { redirect } from 'next/navigation';
 
 import { ProfileForm } from '@/shared/components';
 import { getUserSession } from '@/shared/lib/getUserSession';
@@ -7,13 +8,13 @@ export default async function ProfilePage() {
     const session = await getUserSession();
 
     if (!session) {
-        throw new Error('Сессии нет');
+        redirect('/not-auth');
     }
 
     const user = await prisma.user.findFirst({ where: { id: Number(session?.id) } });
 
     if (!user) {
-        throw new Error('Юзера нет');
+        redirect('/not-auth');
     }
 
     return <ProfileForm userData={user} />;
