@@ -1,12 +1,13 @@
 'use client';
 
+import { FC } from 'react';
+import { signOut } from 'next-auth/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from '@prisma/client';
 
 import { Button, Container, FormInput, Title } from '@/shared/components';
 import { FormRegisterValues, formRegisterSchema } from '@/shared/constants';
-import { FC } from 'react';
 
 interface IProps {
     userData: User;
@@ -35,11 +36,17 @@ export const ProfileForm: FC<IProps> = ({ userData }) => {
                     <FormInput name="password" label="Пароль" type="password" placeholder="Пароль" />
                     <FormInput name="confirmPassword" label="Подтвердите пароль" type="password" placeholder="Подтвердите пароль" />
 
-                    <Button type="submit" className="mt-10 text-base">
+                    <Button disabled={form.formState.isSubmitting} type="submit" className="mt-10 text-base">
                         Сохранить
                     </Button>
 
-                    <Button type="button" variant="secondary" className="text-base">
+                    <Button
+                        onClick={() => signOut({ callbackUrl: '/' })}
+                        variant="secondary"
+                        disabled={form.formState.isSubmitting}
+                        className="text-base"
+                        type="button"
+                    >
                         Выйти
                     </Button>
                 </form>
