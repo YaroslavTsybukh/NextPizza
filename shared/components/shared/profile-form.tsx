@@ -2,16 +2,22 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { User } from '@prisma/client';
 
 import { Button, Container, FormInput, Title } from '@/shared/components';
 import { FormRegisterValues, formRegisterSchema } from '@/shared/constants';
+import { FC } from 'react';
 
-export const ProfileForm = () => {
+interface IProps {
+    userData: User;
+}
+
+export const ProfileForm: FC<IProps> = ({ userData }) => {
     const form = useForm<FormRegisterValues>({
         resolver: zodResolver(formRegisterSchema),
         defaultValues: {
-            email: '',
-            fullName: '',
+            email: userData.email,
+            fullName: userData.fullName,
             password: '',
             confirmPassword: '',
         },
