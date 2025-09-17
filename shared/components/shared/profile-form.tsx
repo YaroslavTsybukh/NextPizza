@@ -5,7 +5,9 @@ import { signOut } from 'next-auth/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from '@prisma/client';
+import toast from 'react-hot-toast';
 
+import { updateUserInfo } from '@/app/actions';
 import { Button, Container, FormInput, Title } from '@/shared/components';
 import { FormRegisterValues, formRegisterSchema } from '@/shared/constants';
 
@@ -24,12 +26,30 @@ export const ProfileForm: FC<IProps> = ({ userData }) => {
         },
     });
 
+    const onSubmit = async (data: FormRegisterValues) => {
+        try {
+            await updateUserInfo({
+                email: data.email,
+                fullName: data.fullName,
+                password: data.password,
+            });
+
+            toast.success('Данные обновлены 📝', {
+                icon: '✅',
+            });
+        } catch (err) {
+            toast.error('Ошибка при обновлении данных', {
+                icon: '❌',
+            });
+        }
+    };
+
     return (
         <Container className="my-10">
             <Title text="Личные данные" size="md" className="font-bold" />
 
             <FormProvider {...form}>
-                <form className="mt-10 flex w-96 flex-col gap-5">
+                <form className="mt-10 flex w-96 flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
                     <FormInput name="email" label="Email" type="email" placeholder="Email" />
                     <FormInput name="fullName" label="Полное имя" type="text" placeholder="Полное имя" />
 
