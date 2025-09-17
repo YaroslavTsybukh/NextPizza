@@ -42,6 +42,8 @@ export const LoginForm: FC<IProps> = ({ onClose }) => {
             toast.error('Не удалось войти в акккаунт', {
                 icon: '❌',
             });
+        } finally {
+            form.reset();
         }
     };
 
@@ -59,7 +61,7 @@ export const LoginForm: FC<IProps> = ({ onClose }) => {
                 <FormInput name="email" label="Email" type="email" placeholder="Email" required />
                 <FormInput name="password" label="Пароль" type="password" placeholder="Пароль" required />
 
-                <Button loading={form.formState.isSubmitted} className="h-12 text-base" type="submit">
+                <Button className="h-12 text-base" type="submit">
                     Войти
                 </Button>
             </form>
