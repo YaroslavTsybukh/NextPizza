@@ -44,7 +44,17 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
                         <Image width={24} height={24} src="https://github.githubassets.com/favicons/favicon.svg" alt="Github Logo" />
                         Github
                     </Button>
-                    <Button variant="secondary" type="button" className="h-12 flex-1 gap-2 p-2">
+                    <Button
+                        onClick={() =>
+                            signIn('google', {
+                                callbackUrl: '/',
+                                redirect: true,
+                            })
+                        }
+                        variant="secondary"
+                        type="button"
+                        className="h-12 flex-1 gap-2 p-2"
+                    >
                         <Image width={24} height={24} src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Logo" />
                     </Button>
                 </div>
