@@ -25,7 +25,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                 title={
                     <div className="flex items-center">
                         <Package size={18} className="mr-2 text-gray-400" />
-                        <p>Стоиомсть корзины:</p>
+                        <p>Стоимость корзины:</p>
                     </div>
                 }
                 value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${totalAmount} грн`}
