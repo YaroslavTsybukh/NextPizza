@@ -5,9 +5,9 @@ import { signOut } from 'next-auth/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from '@prisma/client';
+import { updateUserInfo } from '@/app/actions';
 import toast from 'react-hot-toast';
 
-import { updateUserInfo } from '@/app/actions';
 import { Button, Container, FormInput, Title } from '@/shared/components';
 import { FormRegisterValues, formRegisterSchema } from '@/shared/constants';
 
