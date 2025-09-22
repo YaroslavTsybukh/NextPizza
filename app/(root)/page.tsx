@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Container, Filters, ProductsGroupList, QueryToaster, Title, TopBar } from '@/shared/components';
+import { Container, Filters, ProductsGroupList, QueryToaster, Stories, Title, TopBar } from '@/shared/components';
 import { IGetSearchParams, findPizzas } from '@/shared/lib';
 
 export default async function HomePage({ searchParams }: { searchParams: IGetSearchParams }) {
@@ -17,6 +17,8 @@ export default async function HomePage({ searchParams }: { searchParams: IGetSea
             </Container>
 
             <TopBar categories={categories} />
+
+            <Stories />
 
             <Container className="my-14">
                 <div className="flex gap-[60px]">
