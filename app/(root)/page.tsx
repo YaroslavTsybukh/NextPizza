@@ -16,7 +16,7 @@ export default async function HomePage({ searchParams }: { searchParams: IGetSea
                 <Title text="Все пиццы" size="lg" className="font-extrabold" />
             </Container>
 
-            <TopBar categories={categories} />
+            <TopBar categories={categories.filter((category) => category.products.length > 0)} />
 
             <Stories />
 
