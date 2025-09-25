@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, TextareaHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, InputHTMLAttributes, ChangeEvent, MouseEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 
