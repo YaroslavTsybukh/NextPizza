@@ -20,8 +20,8 @@ export const ProductCard: FC<IProps> = ({ id, name, price, imageUrl, ingredients
     return (
         <div className={cn(className)}>
             <Link href={`/product/${id}`}>
-                <div className="flex h-[260px] justify-center rounded-lg bg-secondary p-6">
-                    <Image src={imageUrl} width={215} height={215} alt="Logo" />
+                <div className="flex h-[260px] justify-center rounded-lg bg-secondary">
+                    <Image className="w-full" src={imageUrl} width={215} height={215} alt="Logo" />
                 </div>
 
                 <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
