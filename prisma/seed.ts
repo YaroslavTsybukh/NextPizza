@@ -17,25 +17,6 @@ const generateProductItem = ({ productId, pizzaType, size }: { productId: number
 };
 
 async function up() {
-    await prisma.user.createMany({
-        data: [
-            {
-                fullName: 'User Test1',
-                email: 'user@test.ru',
-                password: hashSync('111111', 10),
-                verified: new Date(),
-                role: 'USER',
-            },
-            {
-                fullName: 'Admin Admin',
-                email: 'admin@test.ru',
-                password: hashSync('111111', 10),
-                verified: new Date(),
-                role: 'ADMIN',
-            },
-        ],
-    });
-
     await prisma.category.createMany({
         data: categories,
     });
@@ -51,7 +32,7 @@ async function up() {
     const pizza1 = await prisma.product.create({
         data: {
             name: 'Пепперони фреш',
-            imageUrl: '/assets/images/products/pizzas/pepperoni_ fresh.png',
+            imageUrl: '/assets/images/products/pizzas/pepperoni_fresh.png',
             categoryId: 1,
             ingredients: {
                 connect: _ingredients.slice(0, 5),
@@ -168,32 +149,6 @@ async function up() {
             generateProductItem({ productId: 16 }),
             generateProductItem({ productId: 17 }),
         ],
-    });
-
-    await prisma.cart.createMany({
-        data: [
-            {
-                userId: 1,
-                totalAmount: 0,
-                token: '11111',
-            },
-            {
-                userId: 2,
-                totalAmount: 0,
-                token: '222222',
-            },
-        ],
-    });
-
-    await prisma.cartItem.create({
-        data: {
-            productItemId: 1,
-            cartId: 1,
-            quantity: 2,
-            ingredients: {
-                connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
-            },
-        },
     });
 
     await prisma.story.createMany({

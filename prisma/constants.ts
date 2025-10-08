@@ -20,7 +20,7 @@ export const _ingredients = [
     {
         name: 'Сырный бортик',
         price: 179,
-        imageUrl: 'assets/images/ingredients/cheese_border.png',
+        imageUrl: '/assets/images/ingredients/cheese_border.png',
     },
     {
         name: 'Сливочная моцарелла',
@@ -45,7 +45,7 @@ export const _ingredients = [
     {
         name: 'Шампиньоны',
         price: 59,
-        imageUrl: '/assets/images/ingredients/сhampignons.png',
+        imageUrl: '/assets/images/ingredients/champignons.png',
     },
     {
         name: 'Ветчина',
@@ -116,11 +116,6 @@ export const products = [
         categoryId: 2,
     },
     {
-        name: 'Кофе Латте',
-        imageUrl: '/assets/images/products/drinks/latte.png',
-        categoryId: 2,
-    },
-    {
         name: 'Сэнвич ветчина и сыр',
         imageUrl: '/assets/images/products/appetizers/ham_and_cheese_sandwich.png',
         categoryId: 3,
@@ -147,22 +142,22 @@ export const products = [
     },
     {
         name: 'Банановый молочный коктейль',
-        imageUrl: '/assets/images/products/сocktails/banana.png',
+        imageUrl: '/assets/images/products/cocktails/banana.png',
         categoryId: 4,
     },
     {
         name: 'Карамельное яблоко молочный коктейль',
-        imageUrl: '/assets/images/products/сocktails/caramel_apple.png',
+        imageUrl: '/assets/images/products/cocktails/caramel_apple.png',
         categoryId: 4,
     },
     {
         name: 'Молочный коктейль с печеньем Орео',
-        imageUrl: '/assets/images/products/сocktails/oreo_cookies.png',
+        imageUrl: '/assets/images/products/cocktails/oreo_cookies.png',
         categoryId: 4,
     },
     {
         name: 'Классический молочный коктейль 👶',
-        imageUrl: '/assets/images/products/сocktails/classic.png',
+        imageUrl: '/assets/images/products/cocktails/classic.png',
         categoryId: 4,
     },
     {
