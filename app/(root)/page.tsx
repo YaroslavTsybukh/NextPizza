@@ -29,7 +29,13 @@ export default async function HomePage({ searchParams }: { searchParams: IGetSea
                     <div className="flex-1">
                         <div className="flex flex-col gap-16">
                             {categories.map((category) => (
-                                <ProductsGroupList key={category.id} title={category.name} items={category.products} categoryId={category.id} />
+                                <ProductsGroupList
+                                    key={category.id}
+                                    title={category.name}
+                                    href={category.href}
+                                    items={category.products}
+                                    categoryId={category.id}
+                                />
                             ))}
                         </div>
                     </div>

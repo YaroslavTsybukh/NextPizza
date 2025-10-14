@@ -1,18 +1,23 @@
 export const categories = [
     {
         name: 'Пиццы',
+        href: 'Pizzas',
     },
     {
         name: 'Завтрак',
+        href: 'Breakfast',
     },
     {
         name: 'Закуски',
+        href: 'Appetizers',
     },
     {
         name: 'Коктейли',
+        href: 'Cocktails',
     },
     {
         name: 'Напитки',
+        href: 'Drinks',
     },
 ];
 

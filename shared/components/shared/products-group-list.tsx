@@ -10,13 +10,14 @@ import { Title, ProductCard } from '@/shared/components';
 
 interface IProps {
     title: string;
+    href: string;
     items: ProductWithRelations[];
     className?: string;
     listClassName?: string;
     categoryId: number;
 }
 
-export const ProductsGroupList: FC<IProps> = ({ title, items, className, listClassName, categoryId }) => {
+export const ProductsGroupList: FC<IProps> = ({ title, href, items, className, listClassName, categoryId }) => {
     const setActiveId = useCategoryStore((state) => state.setActiveId);
     const intersectionRef = useRef(null);
     const intersection = useIntersection(intersectionRef, {
@@ -28,7 +29,7 @@ export const ProductsGroupList: FC<IProps> = ({ title, items, className, listCla
     }, [intersection?.isIntersecting]);
 
     return (
-        <div className={className} id={title} ref={intersectionRef}>
+        <div className={className} id={href} ref={intersectionRef}>
             <Title text={title} size="lg" className="mb-5 font-extrabold" />
 
             <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
