@@ -16,7 +16,7 @@ export const ChooseProductForm: FC<IProps> = ({ name, imageUrl, price, onSubmit,
     return (
         <div className={cn(className, 'flex flex-1')}>
             <div className="relative flex w-full flex-1 items-center justify-center">
-                <ProductImage src={imageUrl} size={20} alt="product image" />
+                <ProductImage src={imageUrl} size={20} alt="Изображение продукта" />
             </div>
 
             <div className="w-[490px] rounded-lg bg-[#f7f6f5] p-7">

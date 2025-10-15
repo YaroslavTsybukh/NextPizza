@@ -9,5 +9,5 @@ interface IProps {
 }
 
 export const CartItemDetailsImage: FC<IProps> = ({ src, className }) => {
-    return <Image className={cn('h-[60px]', className)} src={src} width={60} height={60} alt="cartItemDetailsImage" />;
+    return <Image className={cn('h-[60px]', className)} src={src} width={60} height={60} alt="Изображение товара в корзине" />;
 };

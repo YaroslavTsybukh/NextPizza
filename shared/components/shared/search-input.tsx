@@ -72,7 +72,13 @@ export const SearchInput: FC<IProps> = ({ className }) => {
                                 key={product.id}
                                 onClick={handleClickOnItem}
                             >
-                                <Image className="rounded-sm" width={32} height={32} src={product.imageUrl} alt={`image ${product.id}`} />
+                                <Image
+                                    className="rounded-sm"
+                                    width={32}
+                                    height={32}
+                                    src={product.imageUrl}
+                                    alt={`Изображение товара ${product.id}`}
+                                />
                                 <span>{product.name}</span>
                             </Link>
                         ))}

@@ -41,7 +41,7 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
                         type="button"
                         className="h-12 flex-1 gap-2 p-2"
                     >
-                        <Image width={24} height={24} src="https://github.githubassets.com/favicons/favicon.svg" alt="Github Logo" />
+                        <Image width={24} height={24} src="https://github.githubassets.com/favicons/favicon.svg" alt="Github Лого" />
                         Github
                     </Button>
                     <Button
@@ -55,7 +55,7 @@ export const AuthModal: FC<IProps> = ({ open, onClose }) => {
                         type="button"
                         className="h-12 flex-1 gap-2 p-2"
                     >
-                        <Image width={24} height={24} src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Logo" />
+                        <Image width={24} height={24} src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Лого" />
                     </Button>
                 </div>
                 <Button onClick={onSwitchType} variant="outline" type="button" className="h-12">

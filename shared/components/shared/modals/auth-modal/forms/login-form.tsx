@@ -57,7 +57,7 @@ export const LoginForm: FC<IProps> = ({ onClose }) => {
                         <Title className="font-bold" text="Вход в аккаунт" size="md" />
                         <p className="text-gray-400">Введите своб почту , чтобы войти в свой аккаунт</p>
                     </div>
-                    <Image src="/assets/images/phone-icon.png" width={60} height={60} alt="Phone icon" />
+                    <Image src="/assets/images/phone-icon.png" width={60} height={60} alt="Иконка телефона" />
                 </div>
 
                 <FormInput name="email" label="Email" type="email" placeholder="Email" required />

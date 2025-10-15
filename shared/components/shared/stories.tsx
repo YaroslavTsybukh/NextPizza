@@ -59,7 +59,7 @@ export const Stories: FC<IProps> = ({ className }) => {
                     src={story.previewImageUrl}
                     height={250}
                     width={200}
-                    alt="Сторис"
+                    alt="Изображение истории"
                 />
             ))}
 
