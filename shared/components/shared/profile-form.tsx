@@ -45,32 +45,34 @@ export const ProfileForm: FC<IProps> = ({ userData }) => {
     };
 
     return (
-        <Container className="my-10">
-            <Title text="Личные данные" size="md" className="font-bold" />
+        <section className="my-10">
+            <Container>
+                <Title text="Личные данные" size="md" className="font-bold" />
 
-            <FormProvider {...form}>
-                <form className="mt-10 flex w-96 flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormInput name="email" label="Email" type="email" placeholder="Email" />
-                    <FormInput name="fullName" label="Полное имя" type="text" placeholder="Полное имя" />
+                <FormProvider {...form}>
+                    <form className="mt-10 flex w-96 flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
+                        <FormInput name="email" label="Email" type="email" placeholder="Email" />
+                        <FormInput name="fullName" label="Полное имя" type="text" placeholder="Полное имя" />
 
-                    <FormInput name="password" label="Пароль" type="password" placeholder="Пароль" />
-                    <FormInput name="confirmPassword" label="Подтвердите пароль" type="password" placeholder="Подтвердите пароль" />
+                        <FormInput name="password" label="Пароль" type="password" placeholder="Пароль" />
+                        <FormInput name="confirmPassword" label="Подтвердите пароль" type="password" placeholder="Подтвердите пароль" />
 
-                    <Button disabled={form.formState.isSubmitting} type="submit" className="mt-10 text-base">
-                        Сохранить
-                    </Button>
+                        <Button disabled={form.formState.isSubmitting} type="submit" className="mt-10 text-base">
+                            Сохранить
+                        </Button>
 
-                    <Button
-                        onClick={() => signOut({ callbackUrl: '/' })}
-                        variant="secondary"
-                        disabled={form.formState.isSubmitting}
-                        className="text-base"
-                        type="button"
-                    >
-                        Выйти
-                    </Button>
-                </form>
-            </FormProvider>
-        </Container>
+                        <Button
+                            onClick={() => signOut({ callbackUrl: '/' })}
+                            variant="secondary"
+                            disabled={form.formState.isSubmitting}
+                            className="text-base"
+                            type="button"
+                        >
+                            Выйти
+                        </Button>
+                    </form>
+                </FormProvider>
+            </Container>
+        </section>
     );
 };

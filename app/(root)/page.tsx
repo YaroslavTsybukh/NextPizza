@@ -12,35 +12,43 @@ export default async function HomePage({ searchParams }: { searchParams: IGetSea
                 <QueryToaster />
             </Suspense>
 
-            <Container className="mt-5">
-                <Title text="Все пиццы" size="lg" className="font-extrabold" />
-            </Container>
+            <section className="mt-5">
+                <Container>
+                    <Title text="Все пиццы" size="lg" className="font-extrabold" />
+                </Container>
+            </section>
 
-            <TopBar categories={categories.filter((category) => category.products.length > 0)} />
+            <section className="mt-5">
+                <TopBar categories={categories.filter((category) => category.products.length > 0)} />
+            </section>
 
-            <Stories />
+            <section className="mt-10">
+                <Stories />
+            </section>
 
-            <Container className="my-14">
-                <div className="flex gap-[60px]">
-                    <Suspense fallback={null}>
-                        <Filters />
-                    </Suspense>
+            <section className="my-14">
+                <Container>
+                    <div className="flex gap-[60px]">
+                        <Suspense fallback={null}>
+                            <Filters />
+                        </Suspense>
 
-                    <div className="flex-1">
-                        <div className="flex flex-col gap-16">
-                            {categories.map((category) => (
-                                <ProductsGroupList
-                                    key={category.id}
-                                    title={category.name}
-                                    href={category.href}
-                                    items={category.products}
-                                    categoryId={category.id}
-                                />
-                            ))}
+                        <div className="flex-1">
+                            <div className="flex flex-col gap-16">
+                                {categories.map((category) => (
+                                    <ProductsGroupList
+                                        key={category.id}
+                                        title={category.name}
+                                        href={category.href}
+                                        items={category.products}
+                                        categoryId={category.id}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </Container>
+                </Container>
+            </section>
         </>
     );
 }

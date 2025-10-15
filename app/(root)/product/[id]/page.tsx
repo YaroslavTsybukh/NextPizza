@@ -24,8 +24,10 @@ export default async function ProductPage({ params }: { params: { id: string } }
     if (!product) notFound();
 
     return (
-        <Container className="my-10 flex flex-col">
-            <ProductForm product={product} />
-        </Container>
+        <section className="my-10">
+            <Container className="flex flex-col">
+                <ProductForm product={product} />
+            </Container>
+        </section>
     );
 }

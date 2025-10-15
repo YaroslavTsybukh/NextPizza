@@ -48,7 +48,7 @@ export const Stories: FC<IProps> = ({ className }) => {
     };
 
     return (
-        <Container className={cn('my-10 flex items-center justify-between gap-2', className)}>
+        <Container className={cn('flex items-center justify-between gap-2', className)}>
             {stories.length === 0 && [...Array(6)].map((_, idx) => <Skeleton key={idx} className="h-[250px] w-[200px]" />)}
 
             {stories.map((story) => (
