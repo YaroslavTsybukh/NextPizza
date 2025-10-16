@@ -4,7 +4,7 @@ import { prisma } from '@/prisma/prisma-client';
 import { OrderStatus } from '@prisma/client';
 
 import { OrderSuccessTemplate } from '@/shared/components';
-import { sendEmail } from '@/shared/lib';
+import { sendEmail } from '@/shared/lib/send-email';
 
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`, {
     apiVersion: '2025-08-27.basil',

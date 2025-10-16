@@ -6,7 +6,8 @@ import { OrderStatus, Prisma } from '@prisma/client';
 import { hashSync } from 'bcrypt';
 
 import { CheckoutFormValues } from '@/shared/constants';
-import { sendEmail, createPayment } from '@/shared/lib';
+import { sendEmail } from '@/shared/lib/send-email';
+import { createPayment } from '@/shared/lib/create-payment';
 import { PayOrderTemplate, VerificationUserTemplate } from '@/shared/components';
 import { getUserSession } from '@/shared/lib/getUserSession';
 
