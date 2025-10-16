@@ -69,7 +69,7 @@ export default function CheckoutPage() {
     };
     return (
         <>
-            <section className="my-8">
+            <section className="py-8">
                 <Container>
                     <Title text="Оформление заказа" className="text-[36px] font-extrabold" />
                 </Container>
