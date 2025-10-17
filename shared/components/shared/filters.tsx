@@ -32,8 +32,8 @@ export const Filters: FC = () => {
                 onClickCheckbox={filter.toggleTypePizza}
                 selected={filter.selectedTypePizza}
                 items={[
-                    { text: 'Тонкое', value: '1' },
-                    { text: 'Традиционное', value: '2' },
+                    { text: 'Традиционное', value: '1' },
+                    { text: 'Тонкое', value: '2' },
                 ]}
             />
             <CheckboxFiltersGroup
