@@ -54,7 +54,11 @@ export async function POST(req: NextRequest) {
             });
 
             const items = JSON.parse(order.items as string);
-            await sendEmail(order.email, 'Next Pizza / Ваш заказ успешно оформлен 🎉', OrderSuccessTemplate({ orderId: order.id, items }));
+            await sendEmail(
+                order.email,
+                'Next Pizza / Ваш заказ успешно оформлен 🎉',
+                OrderSuccessTemplate({ orderId: order.id, totalAmount: order.totalAmount, items }),
+            );
         } else if (
             event.type === 'checkout.session.expired' ||
             event.type === 'checkout.session.async_payment_failed' ||

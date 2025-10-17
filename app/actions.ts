@@ -5,10 +5,11 @@ import { prisma } from '@/prisma/prisma-client';
 import { OrderStatus, Prisma } from '@prisma/client';
 import { hashSync } from 'bcrypt';
 
+import { PayOrderTemplate, VerificationUserTemplate } from '@/shared/components';
 import { CheckoutFormValues } from '@/shared/constants';
+import { calculateTotalWithFees } from '@/shared/lib';
 import { sendEmail } from '@/shared/lib/send-email';
 import { createPayment } from '@/shared/lib/create-payment';
-import { PayOrderTemplate, VerificationUserTemplate } from '@/shared/components';
 import { getUserSession } from '@/shared/lib/getUserSession';
 
 export async function createOrder(data: CheckoutFormValues) {
@@ -94,7 +95,7 @@ export async function createOrder(data: CheckoutFormValues) {
             'Next Pizza / Оплатите заказ #' + order.id,
             PayOrderTemplate({
                 orderId: order.id,
-                totalAmount: order.totalAmount,
+                totalAmount: calculateTotalWithFees(order.totalAmount).totalPriceWithFees,
                 paymentUrl: url,
             }),
         );

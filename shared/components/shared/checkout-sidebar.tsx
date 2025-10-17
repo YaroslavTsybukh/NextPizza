@@ -35,7 +35,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                 title={
                     <div className="flex items-center">
                         <Percent size={18} className="mr-2 text-gray-400" />
-                        <p>Налоги:</p>
+                        <p>Налоги (15%) :</p>
                     </div>
                 }
                 value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : vatPrice}
