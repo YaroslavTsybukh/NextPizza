@@ -10,16 +10,16 @@ export interface ICartState {
     totalAmount: number;
     items: ICartStateItem[];
 
-    /* Получение товаров из корзины */
+    /* Receiving goods from the shopping cart */
     getCartItems: () => Promise<void>;
 
-    /* Запрос на обновление количества товара */
+    /* Request to update the quantity of goods */
     updateItemQuantity: (id: number, quantity: number) => Promise<void>;
 
-    /* Запрос на добавление товара в корзину */
+    /* Request to add an item to the shopping cart */
     addCartItem: (values: ICreateCartItemValues) => Promise<void>;
 
-    /* Запрос на удаление товара из корзины */
+    /*Request to remove item from cart */
     removeCartItem: (id: number) => Promise<void>;
 }
 

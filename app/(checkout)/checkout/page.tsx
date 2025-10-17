@@ -80,7 +80,7 @@ export default function CheckoutPage() {
                     <FormProvider {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <div className="flex gap-10">
-                                {/* Левая часть */}
+                                {/* Left side */}
                                 <div className="mb-20 flex flex-1 flex-col gap-10">
                                     <CheckoutCart
                                         items={items}
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
                                     <CheckoutAddressForm className={loading ? 'pointer-events-none opacity-40' : ''} />
                                 </div>
 
-                                {/* Правая часть */}
+                                {/* Right side */}
                                 <div className="w-[450px]">
                                     <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
                                 </div>
