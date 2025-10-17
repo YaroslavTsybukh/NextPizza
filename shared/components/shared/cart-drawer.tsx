@@ -37,7 +37,7 @@ export const CartDrawer: FC<PropsWithChildren<IProps>> = ({ children, className 
                         <div className="mx-auto flex w-72 flex-col items-center justify-center">
                             <Image src="/assets/images/empty-box.png" alt="Пустая корзина" width={120} height={120} />
                             <SheetTitle>Корзина пустая</SheetTitle>
-                            <p className="mb-5 text-center text-neutral-500">Добавьте хотя бы одну пиццу, чтобы совершить заказ</p>
+                            <p className="mb-5 text-center text-neutral-500">Добавьте хотя бы один товар, чтобы совершить заказ</p>
                             <SheetClose asChild>
                                 <Button className="h-12 w-56 text-base" size="lg">
                                     <ArrowLeft className="mr-2 w-5" />
