@@ -30,10 +30,11 @@ export const OrderSuccessTemplate: FC<IProps> = ({ orderId, totalAmount, items }
 
             <hr />
 
+            <p>Стоимость корзины: {totalAmount.toFixed(2)} грн</p>
             <p>Доставка: {deliveryPrice} грн</p>
-            <p>Налоги (15%) : {vatPrice} грн</p>
+            <p>Налоги (15%) : {vatPrice.toFixed(2)} грн</p>
             <p>
-                <strong>Итого: {totalPriceWithFees} грн</strong>
+                <strong>Итого: {totalPriceWithFees.toFixed(2)} грн</strong>
             </p>
         </div>
     );

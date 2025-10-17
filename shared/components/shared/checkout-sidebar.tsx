@@ -18,7 +18,11 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
         <WhiteBlock className={cn('sticky top-4 p-6', className)}>
             <div className="flex flex-col gap-1">
                 <span className="text-xl">Итого</span>
-                {loading ? <Skeleton className="h-11 w-48" /> : <span className="h-11 text-[34px] font-extrabold">{totalPriceWithFees} грн</span>}
+                {loading ? (
+                    <Skeleton className="h-11 w-48" />
+                ) : (
+                    <span className="h-11 text-[34px] font-extrabold">{totalPriceWithFees.toFixed(2)} грн</span>
+                )}
             </div>
 
             <CheckoutItemDetails
@@ -28,7 +32,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                         <p>Стоимость корзины:</p>
                     </div>
                 }
-                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${totalAmount} грн`}
+                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${totalAmount.toFixed(2)} грн`}
             />
 
             <CheckoutItemDetails
@@ -38,7 +42,7 @@ export const CheckoutSidebar: FC<IProps> = ({ totalAmount, loading, className })
                         <p>Налоги (15%) :</p>
                     </div>
                 }
-                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : vatPrice}
+                value={loading ? <Skeleton className="rounde-[6px] h-6 w-16" /> : `${vatPrice.toFixed(2)} грн`}
             />
 
             <CheckoutItemDetails
