@@ -1,6 +1,6 @@
 export const calculateTotalWithFees = (totalAmount: number) => {
     const VAT = 15;
-    const DELIVERY_PRICE = 100;
+    const DELIVERY_PRICE = totalAmount > 0 ? 100 : 0;
 
     const vatPrice = (totalAmount * VAT) / 100;
 
